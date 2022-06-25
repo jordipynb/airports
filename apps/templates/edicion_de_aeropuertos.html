@@ -1,0 +1,257 @@
+{% extends "./index.html" %}
+
+{% block title %} Gestión de Aerpuertos {% endblock %}
+
+{% block body %}
+<div class="row">
+    <div class="col-md-4 offset-md-4">
+        <h2>Edición de Aeropuertos</h2>
+        <div class="card">
+            <div class="card-body">
+                <form id="form" action="/editarAeropuerto/" method="POST">{% csrf_token %}
+                    <div hidden class="form-group">
+                        <input type="text" id="data" value="{{tabla}}"name="tabla" class="formulario Aeropuerto form-control" placeholder="Direccion"
+                            maxlength="100" >
+                    </div>
+                    <div hidden class="form-group">
+                        <input type="text" id="id" value="{{elemento.id}}"name="id" placeholder="Direccion"
+                            maxlength="100" >
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="nombre" name="nombre" value="{{elemento.Nom_A}}" class="formulario Aeropuerto form-control" placeholder="Nombre"
+                            maxlength="50" >
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="direccion" name="direccion" value="{{elemento.Direccion}}" class="formulario Aeropuerto form-control" placeholder="Direccion"
+                            maxlength="100" >
+                    </div>
+                    <div hidden class="form-group">
+                        <input type="text" id="hidden" name="data" class="formulario Aeropuerto form-control" placeholder="Direccion"
+                            maxlength="100" >
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="pos_Geo" name="pos_Geo"  value="{{elemento.Pos_Geo}}" class="formulario Aeropuerto form-control" placeholder="Posicion Geografica"
+                            >
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="nom_C" name="Nom_C"   value="{{elemento.Nom_C}}" class="formulario Cliente form-control" placeholder="Nombre"
+                            >
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="nacionalidad" name="Nacionalidad" value="{{elemento.Nacionalidad}}" class="formulario Cliente form-control" placeholder="Nacionalidad"
+                            >
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="tipoC" name="Tipo_C" value="{{elemento.Tipo_C}}" class="formulario Cliente form-control" placeholder="Tipo"
+                            >
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="no_Mat" name="No_Mat" value="{{elemento.No_Mat}}" class="formulario Nave form-control" placeholder="No.Matricula"
+                            >
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="clasific" name="Clasific" value="{{elemento.Clasific}}" class="formulario Nave form-control" placeholder="Clasificacion"
+                            >
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="capacidad" name="Capacidad" value="{{elemento.Capacidad}}" class="formulario Nave form-control" placeholder="Capacidad"
+                            >
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="no_Trip" name="No_Trip" value="{{elemento.No_Trip}}" class="formulario Nave form-control" placeholder="No.Tripulantes"
+                            >
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="id_D" name="Id_D" value="{{elemento.Id_D}}" class="formulario Nave form-control" placeholder="Dueño"
+                            >
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="clasificP" name="ClasificP" value="{{elemento.Clasific}}" class="formulario Plazas form-control" placeholder="Clasificacion"
+                            >
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="no_TripP" name="No_TripP" value="{{elemento.No_Trip}}" class="formulario Plazas form-control" placeholder="No.Tripulantes"
+                            >
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="capacidadP" name="CapacidadP" value="{{elemento.Capacidad}}" class="formulario Plazas form-control" placeholder="Capacidad"
+                            >
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="total_P" name="Total_P" value="{{elemento.Total_P}}" class="formulario Plazas form-control" placeholder="Pasajeros"
+                            >
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="no_MatV" name="No_MatV" value="{{elemento.No_Mat}}" class="formulario Vuelo form-control" placeholder="No.Matricula"
+                            >
+                    </div>
+                    <div class="form-group">
+                        <input type="datetime-local" id="fecha_inV" name="Fecha_inV" value="{{elemento.Fecha_in}}" class="formulario Vuelo form-control"
+                            >
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="id_AV" name="Id_AV" value="{{elemento.Id_A}}" class="formulario Vuelo form-control" placeholder="Aeropuerto"
+                            >
+                    </div>
+                    <div class="form-group">
+                        <input type="datetime-local" id="fecha_outV" name="Fecha_outV" value="{{elemento.Fecha_out}}" class="formulario Vuelo form-control"
+                            >
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="estadoNave" name="EstadoNave" value="{{elemento.EstadoNave}}" class="formulario Vuelo form-control" placeholder="Estado"
+                            >
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="no_MatA" name="No_MatA" value="{{elemento.No_Mat}}" class="formulario Arribo form-control" placeholder="No.Matricula"
+                            >
+                    </div>
+                    <div class="form-group">
+                        <input type="datetime-local" id="fecha_inA" name="Fecha_inA" value="{{elemento.Fecha_in}}" class="formulario Arribo form-control"
+                            >
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="id_CA" name="Id_CA" value="{{elemento.Id_C}}" class="formulario Arribo form-control" placeholder="Cliente"
+                            >
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="caracter" name="Caracter" value="{{elemento.Caracter}}" class="formulario Arribo form-control" placeholder="Caracter"
+                            >
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="nom_I" name="Nom_I" value="{{elemento.Nom_I}}" class="formulario Instalacion form-control" placeholder="Nombre"
+                            >
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="tipo_I" name="Tipo_I" value="{{elemento.Tipo_I}}" class="formulario Instalacion form-control" placeholder="Tipo"
+                            >
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="ubicacion" name="Ubicacion" value="{{elemento.Ubicacion}}" class="formulario Instalacion form-control" placeholder="Ubicacion"
+                            >
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="id_AI" name="Id_AI" value="{{elemento.Id_A}}" class="formulario Instalacion form-control" placeholder="Aeropuerto"
+                            >
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="id_IS" name="Id_IS" value="{{elemento.Id_I}}" class="formulario Servicio form-control" placeholder="Instalacion"
+                            >
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="codigoS" name="CodigoS" value="{{elemento.Codigo}}" class="formulario Servicio form-control" placeholder="Codigo"
+                            >
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="precio" name="Precio" value="{{elemento.Precio}}" class="formulario Servicio form-control" placeholder="Precio"
+                            >
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="descripcion" name="Descripcion" value="{{elemento.Descripcion}}" class="formulario Servicio form-control" placeholder="Descripcion"
+                            >
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="id_IV" name="Id_IV" value="{{elemento.Id_I}}" class="formulario Valoracion form-control" placeholder="Instalacion"
+                            >
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="codigoV" name="CodigoV" value="{{elemento.Codigo}}" class="formulario Valoracion form-control" placeholder="Codigo"
+                            >
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="no_MatVal" name="No_MatVal" value="{{elemento.No_Mat}}" class="formulario Valoracion form-control" placeholder="No.Matricula"
+                            >
+                    </div>
+                    <div class="form-group">
+                        <input type="datetime-local" id="fecha_inVal" name="Fecha_inVal" value="{{elemento.Fecha_in}}" class="formulario Valoracion form-control"
+                            >
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="id_CV" name="Id_CV" value="{{elemento.Id_C}}" class="formulario Valoracion form-control" placeholder="Cliente"
+                            >
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="valoracionV" name="ValoracionV" value="{{elemento.Valoracion}}" class="formulario Valoracion form-control" placeholder="Valoracion"
+                            >
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="id_IR" name="Id_IR" value="{{elemento.Id_I}}" class="formulario Reparacion form-control" placeholder="Instalacion"
+                            >
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="codigoR" name="CodigoR" value="{{elemento.Codigo}}" class="formulario Reparacion form-control" placeholder="Codigo"
+                            >
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="tipoR" name="TipoR" value="{{elemento.Tipo}}" class="formulario Reparacion form-control" placeholder="Tipo"
+                            >
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="id_IRN" name="Id_IRN" value="{{elemento.Id_I}}" class="formulario ReparaNave form-control" placeholder="Instalacion"
+                            >
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="codigoRN" name="CodigoRN" value="{{elemento.Codigo}}" class="formulario ReparaNave form-control" placeholder="Codigo"
+                            >
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="tipoRN" name="TipoRN" value="{{elemento.Tipo}}" class="formulario ReparaNave form-control" placeholder="Tipo"
+                            >
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="no_MatRN" name="No_MatRN" value="{{elemento.No_Mat}}" class="formulario ReparaNave form-control" placeholder="No.Matricula"
+                            >
+                    </div>
+                    <div class="form-group">
+                        <input type="datetime-local" id="fecha_inRN" name="Fecha_inRN" value="{{elemento.Fecha_in}}" class="formulario ReparaNave form-control"
+                            >
+                    </div>
+                    <div class="form-group">
+                        <input type="datetime-local" id="fecha_Ini" name="Fecha_Ini" value="{{elemento.Fecha_Ini}}" class="formulario ReparaNave form-control"
+                            >
+                    </div>
+                    <div class="form-group">
+                        <input type="datetime-local" id="tiempo_P" name="Tiempo_P" value="{{elemento.Tiempo_P}}" class="formulario ReparaNave form-control"
+                            >
+                    </div>
+                    <div class="form-group">
+                        <input type="datetime-local" id="fecha_Fin" name="Fecha_Fin" value="{{elemento.Fecha_Fin}}" class="formulario ReparaNave form-control"
+                            >
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="id_IRD" name="Id_IRD" value="{{elemento.Id_I}}" class="formulario ReparacionesDependientes form-control" placeholder="Instalacion"
+                            >
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="codigoRD" name="CodigoRD" value="{{elemento.Codigo}}" class="formulario ReparacionesDependientes form-control" placeholder="Codigo"
+                            >
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="tipoRD" name="TipoRD" value="{{elemento.Tipo}}" class="formulario ReparacionesDependientes form-control" placeholder="Tipo"
+                            >
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="id_IRDD" name="Id_IRDD" value="{{elemento.Id_IDep}}" class="formulario ReparacionesDependientes form-control" placeholder="Instalacion Dependiente"
+                            >
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="codigoRDD" name="CodigoRDD" value="{{elemento.Codigo_Dep}}" class="formulario ReparacionesDependientes form-control" placeholder="Codigo Dependiente"
+                            >
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="tipoRDD" name="TipoRDD" value="{{elemento.Tipo_Dep}}" class="formulario ReparacionesDependientes form-control" placeholder="Tipo Dependiente"
+                            >
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" id ="guardar" class="btn btn-success btn-block text-white">Guardar</button>
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-success btn-block text-white">Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
