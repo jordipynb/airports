@@ -1,6 +1,19 @@
 from django.shortcuts import render,redirect
-from .models import *
 from django.contrib import messages
+
+from apps.models.Aeropuerto import Aeropuerto
+from apps.models.Cliente import Cliente
+from apps.models.Plazas import Plazas
+from apps.models.Nave import Nave
+from apps.models.Vuelo import Vuelo
+from apps.models.Arribo import Arribo
+from apps.models.Instalacion import Instalacion
+from apps.models.Servicio import Servicio
+from apps.models.Valoracion import Valoracion
+from apps.models.Reparacion import Reparacion
+from apps.models.ReparaNave import ReparaNave
+from apps.models.ReparacionesDependientes import ReparacionesDependientes
+
 
 def listar(request):
     dict=para_listar(request)
@@ -11,27 +24,27 @@ def para_listar(request):
     listado=[]
     if data == "Aeropuerto":
         listado = Aeropuerto.objects.all()
-    if data == "Cliente":
+    elif data == "Cliente":
         listado = Cliente.objects.all()
-    if data == "Nave":
+    elif data == "Nave":
         listado = Nave.objects.all()
-    if data == "Plazas":
+    elif data == "Plazas":
         listado = Plazas.objects.all()
-    if data == "Vuelo":
+    elif data == "Vuelo":
         listado = Vuelo.objects.all()
-    if data == "Arribo":
+    elif data == "Arribo":
         listado = Arribo.objects.all()
-    if data == "Instalacion":
+    elif data == "Instalacion":
         listado = Instalacion.objects.all()
-    if data == "Servicio":
+    elif data == "Servicio":
         listado = Servicio.objects.all()
-    if data == "Valoracion":
+    elif data == "Valoracion":
         listado = Valoracion.objects.all()
-    if data == "Reparacion":
+    elif data == "Reparacion":
         listado = Reparacion.objects.all()
-    if data == "ReparaNave":
+    elif data == "ReparaNave":
         listado = ReparaNave.objects.all()
-    if data == "ReparacionesDependientes":
+    elif data == "ReparacionesDependientes":
         listado = ReparacionesDependientes.objects.all()
     messages.success(request, 'Listados!')
     campos=[]
@@ -103,55 +116,55 @@ def registrarAeropuerto(request):
     if data == "Aeropuerto":
         aeropuerto = Aeropuerto.objects.create(
         Nom_A=nombre,Direccion=direccion,Pos_Geo=pos_Geo)
-    if data == "Cliente":
+    elif data == "Cliente":
         cliente = Cliente.objects.create(
         Nom_C=nom_C,Tipo_C=tipo_C,Nacionalidad=nacionalidad)
-    if data == "Nave":
+    elif data == "Nave":
         cliente = Cliente.objects.get(id=id_D)
         plazas = Plazas.objects.get(Clasific=clasific, No_Trip=no_Trip, Capacidad=capacidad)
         nave = Nave.objects.create(
         No_Mat=no_Mat,Clasific=clasific,Capacidad=capacidad,No_Trip=no_Trip,Id_D=cliente,Id_Plazas=plazas)
-    if data == "Plazas":
+    elif data == "Plazas":
         plazas = Plazas.objects.create(
         Clasific=clasificP,No_Trip=no_TripP,Capacidad=capacidadP,Total_P=total_P)
-    if data == "Vuelo":
+    elif data == "Vuelo":
         nave = Nave.objects.get(No_Mat=no_MatV)
         aeropuerto = Aeropuerto.objects.get(id=id_AV)
         vuelo = Vuelo.objects.create(
         No_Mat=nave,Fecha_in=fecha_inV,Id_A=aeropuerto,Fecha_out=fecha_outV,EstadoNave=estadoNave)
-    if data == "Arribo":
+    elif data == "Arribo":
         cliente = Cliente.objects.get(id=id_CA)
         nave = Nave.objects.get(No_Mat=no_MatA)
         vuelo = Vuelo.objects.get(No_Mat=nave,Fecha_in=fecha_inA)
         arribo = Arribo.objects.create(
         Id_V=vuelo,No_Mat=no_MatA,Fecha_in=fecha_inA,Id_C=cliente,Caracter=caracter)
-    if data == "Instalacion":
+    elif data == "Instalacion":
         aeropuerto = Aeropuerto.objects.get(id=id_AI)
         instalacion = Instalacion.objects.create(
         Nom_I=nom_I,Tipo_I=tipo_I,Ubicacion=ubicacion,Id_A=aeropuerto)
-    if data == "Servicio":
+    elif data == "Servicio":
         instalacion = Instalacion.objects.get(id=id_IS)
         servicio = Servicio.objects.create(
         Id_I=instalacion,Codigo=codigoS,Precio=precio,Descripcion=descripcion)
-    if data == "Valoracion":
+    elif data == "Valoracion":
         instalacion = Instalacion.objects.get(id=id_IV)
         servicio = Servicio.objects.get(Id_I=instalacion,Codigo=codigoV)
         cliente = Cliente.objects.get(id=id_CV)
         arribo = Arribo.objects.get(No_Mat=no_MatVal,Fecha_in=fecha_inVal,Id_C=cliente)
         valoracion = Valoracion.objects.create(
         Id_S=servicio,Id_Ar=arribo,Id_I=id_IV,Codigo=codigoV,No_Mat=no_MatVal,Fecha_in=fecha_inVal,Id_C=id_CV,Valoracion=valoracionV)
-    if data == "Reparacion":
+    elif data == "Reparacion":
         instalacion = Instalacion.objects.get(id=id_IR)
         servicio = Servicio.objects.get(Id_I=instalacion,Codigo=codigoR)
         reparacion = Reparacion.objects.create(
         Id_S=servicio,Id_I=id_IR,Codigo=codigoR,Tipo=tipoR)
-    if data == "ReparaNave":
+    elif data == "ReparaNave":
         reparacion = Reparacion.objects.get(Id_I=id_IRN,Codigo=codigoRN,Tipo=tipoRN)
         nave = Nave.objects.get(No_Mat=no_MatRN)
         vuelo = Vuelo.objects.get(No_Mat=nave,Fecha_in=fecha_inRN)
         reparanave = ReparaNave.objects.create(
         Id_Rep=reparacion,Id_V=vuelo,Id_I=id_IRN,Codigo=codigoRN,Tipo=tipoRN,No_Mat=no_MatRN,Fecha_in=fecha_inRN,Fecha_Ini=fecha_Ini,Tiempo_P=tiempo_P,Fecha_Fin=fecha_Fin)
-    if data == "ReparacionesDependientes":
+    elif data == "ReparacionesDependientes":
         reparacion1 = Reparacion.objects.get(Id_I=id_IRD,Codigo=codigoRD,Tipo=tipoRD)
         reparacion2 = Reparacion.objects.get(Id_I=id_IRDD,Codigo=codigoRDD,Tipo=tipoRDD)
         reparacionesDependientes = ReparacionesDependientes.objects.create(
@@ -223,13 +236,13 @@ def editarAeropuerto(request):
         aeropuerto.Direccion = direccion
         aeropuerto.Pos_Geo = pos_Geo
         aeropuerto.save()
-    if data=="Cliente":
+    elif data=="Cliente":
         cliente = Cliente.objects.get(id=codigo)
         cliente.Nom_C = nom_C
         cliente.Tipo_C = tipo_C
         cliente.Nacionalidad = nacionalidad
         cliente.save()
-    if data=="Nave":
+    elif data=="Nave":
         nave = Nave.objects.get(id=codigo)
         nave.No_Mat = no_Mat
         nave.Clasific = clasific
@@ -240,14 +253,14 @@ def editarAeropuerto(request):
         cliente = Cliente.objects.get(id=id_D)
         nave.Id_D=cliente
         nave.save()
-    if data=="Plazas":
+    elif data=="Plazas":
         plazas = Plazas.objects.get(id=codigo)
         plazas.Clasific = clasificP
         plazas.No_Trip = no_TripP
         plazas.Capacidad = capacidadP
         plazas.Total_P = total_P
         plazas.save()
-    if data=="Vuelo":
+    elif data=="Vuelo":
         vuelo = Vuelo.objects.get(id=codigo)
         nave = Nave.objects.get(No_Mat=no_MatV)
         aeropuerto = Aeropuerto.objects.get(id=id_AV)
@@ -257,7 +270,7 @@ def editarAeropuerto(request):
         vuelo.Fecha_out = fecha_outV
         vuelo.EstadoNave = estadoNave
         vuelo.save()
-    if data=="Arribo":
+    elif data=="Arribo":
         arribo = Arribo.objects.get(id=codigo)
         cliente = Cliente.objects.get(id=id_CA)
         nave = Nave.objects.get(No_Mat=no_MatA)
@@ -268,7 +281,7 @@ def editarAeropuerto(request):
         arribo.Id_C = cliente
         arribo.Caracter = caracter
         arribo.save()
-    if data=="Instalacion":
+    elif data=="Instalacion":
         instalacion = Instalacion.objects.get(id=codigo)
         aeropuerto = Aeropuerto.objects.get(id=id_AI)
         instalacion.Id_A = aeropuerto
@@ -276,7 +289,7 @@ def editarAeropuerto(request):
         instalacion.Tipo_I = tipo_I
         instalacion.Ubicacion = ubicacion
         instalacion.save()
-    if data=="Servicio":
+    elif data=="Servicio":
         servicio = Servicio.objects.get(id=codigo)
         instalacion = Instalacion.objects.get(id=id_IS)
         servicio.Id_I = instalacion
@@ -284,7 +297,7 @@ def editarAeropuerto(request):
         servicio.Precio = precio
         servicio.Descripcion = descripcion
         servicio.save()
-    if data=="Valoracion":
+    elif data=="Valoracion":
         instalacion = Instalacion.objects.get(id=id_IV)
         servicio = Servicio.objects.get(Id_I=instalacion,Codigo=codigoV)
         cliente = Cliente.objects.get(id=id_CV)
@@ -299,7 +312,7 @@ def editarAeropuerto(request):
         valoracion.Id_C = id_CV
         valoracion.Valoracion = valoracionV
         valoracion.save()
-    if data=="Reparacion":
+    elif data=="Reparacion":
         instalacion = Instalacion.objects.get(id=id_IR)
         servicio = Servicio.objects.get(Id_I=instalacion,Codigo=codigoR)
         reparacion = Reparacion.objects.get(id=codigo)
@@ -308,7 +321,7 @@ def editarAeropuerto(request):
         reparacion.Codigo = codigoR
         reparacion.Tipo = tipoR
         reparacion.save()
-    if data=="ReparaNave":
+    elif data=="ReparaNave":
         reparacion = Reparacion.objects.get(Id_I=id_IRN,Codigo=codigoRN,Tipo=tipoRN)
         nave = Nave.objects.get(No_Mat=no_MatRN)
         vuelo = Vuelo.objects.get(No_Mat=nave,Fecha_in=fecha_inRN)
@@ -324,7 +337,7 @@ def editarAeropuerto(request):
         reparanave.Tiempo_P = tiempo_P
         reparanave.Fecha_Fin = fecha_Fin
         reparanave.save()
-    if data=="ReparacionesDependientes":
+    elif data=="ReparacionesDependientes":
         reparacion1 = Reparacion.objects.get(Id_I=id_IRD,Codigo=codigoRD,Tipo=tipoRD)
         reparacion2 = Reparacion.objects.get(Id_I=id_IRDD,Codigo=codigoRDD,Tipo=tipoRDD)
         reparacionesDependientes = ReparacionesDependientes.objects.get(id=codigo)
@@ -343,27 +356,27 @@ def editarAeropuerto(request):
 def edicionAeropuerto(request,codigo,tabla,campos):
     if(tabla=="Aeropuerto"):
         elemento = Aeropuerto.objects.get(id=codigo)
-    if(tabla=="Cliente"):
+    elif(tabla=="Cliente"):
         elemento= Cliente.objects.get(id=codigo)
-    if(tabla=="Nave"):
+    elif(tabla=="Nave"):
         elemento= Nave.objects.get(id=codigo)
-    if(tabla=="Plazas"):
+    elif(tabla=="Plazas"):
         elemento= Plazas.objects.get(id=codigo)
-    if(tabla=="Vuelo"):
+    elif(tabla=="Vuelo"):
         elemento= Vuelo.objects.get(id=codigo)
-    if(tabla=="Arribo"):
+    elif(tabla=="Arribo"):
         elemento= Arribo.objects.get(id=codigo)
-    if(tabla=="Instalacion"):
+    elif(tabla=="Instalacion"):
         elemento= Instalacion.objects.get(id=codigo)
-    if(tabla=="Servicio"):
+    elif(tabla=="Servicio"):
         elemento= Servicio.objects.get(id=codigo)
-    if(tabla=="Valoracion"):
+    elif(tabla=="Valoracion"):
         elemento= Valoracion.objects.get(id=codigo)
-    if(tabla=="Reparacion"):
+    elif(tabla=="Reparacion"):
         elemento= Reparacion.objects.get(id=codigo)
-    if(tabla=="ReparaNave"):
+    elif(tabla=="ReparaNave"):
         elemento= ReparaNave.objects.get(id=codigo)
-    if(tabla=="ReparacionesDependientes"):
+    elif(tabla=="ReparacionesDependientes"):
         elemento= ReparacionesDependientes.objects.get(id=codigo)
     return render(request, "edicion_de_aeropuertos.html", {"elemento": elemento,"tabla":tabla,"campos":campos})
 
@@ -371,37 +384,37 @@ def eliminarAeropuerto(request,codigo,tabla):
     if tabla== "Aeropuerto":
         elemento = Aeropuerto.objects.get(id=codigo)
         elemento.delete()
-    if tabla== "Cliente":
+    elif tabla== "Cliente":
         elemento = Cliente.objects.get(id=codigo)
         elemento.delete()
-    if tabla== "Nave":
+    elif tabla== "Nave":
         elemento = Nave.objects.get(id=codigo)
         elemento.delete()
-    if tabla== "Plazas":
+    elif tabla== "Plazas":
         elemento = Plazas.objects.get(id=codigo)
         elemento.delete()
-    if tabla== "Vuelo":
+    elif tabla== "Vuelo":
         elemento = Vuelo.objects.get(id=codigo)
         elemento.delete()
-    if tabla== "Arribo":
+    elif tabla== "Arribo":
         elemento= Arribo.objects.get(id=codigo)
         elemento.delete()
-    if tabla== "Instalacion":
+    elif tabla== "Instalacion":
         elemento= Instalacion.objects.get(id=codigo)
         elemento.delete()
-    if tabla== "Servicio":
+    elif tabla== "Servicio":
         elemento= Servicio.objects.get(id=codigo)
         elemento.delete()
-    if tabla== "Valoracion":
+    elif tabla== "Valoracion":
         elemento= Valoracion.objects.get(id=codigo)
         elemento.delete()
-    if tabla== "Reparacion":
+    elif tabla== "Reparacion":
         elemento= Reparacion.objects.get(id=codigo)
         elemento.delete()
-    if tabla== "ReparaNave":
+    elif tabla== "ReparaNave":
         elemento= ReparaNave.objects.get(id=codigo)
         elemento.delete()
-    if tabla== "ReparacionesDependientes":
+    elif tabla== "ReparacionesDependientes":
         elemento= ReparacionesDependientes.objects.get(id=codigo)
         elemento.delete()
     messages.success(request, '¡Eliminado!')
