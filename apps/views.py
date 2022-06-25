@@ -1,18 +1,18 @@
 from django.shortcuts import render,redirect
 from django.contrib import messages
 
-from apps.models.Aeropuerto import Aeropuerto
-from apps.models.Cliente import Cliente
-from apps.models.Plazas import Plazas
-from apps.models.Nave import Nave
-from apps.models.Vuelo import Vuelo
-from apps.models.Arribo import Arribo
-from apps.models.Instalacion import Instalacion
-from apps.models.Servicio import Servicio
-from apps.models.Valoracion import Valoracion
-from apps.models.Reparacion import Reparacion
-from apps.models.ReparaNave import ReparaNave
-from apps.models.ReparacionesDependientes import ReparacionesDependientes
+from model.models.Aeropuerto import Aeropuerto
+from model.models.Cliente import Cliente
+from model.models.Plazas import Plazas
+from model.models.Nave import Nave
+from model.models.Vuelo import Vuelo
+from model.models.Arribo import Arribo
+from model.models.Instalacion import Instalacion
+from model.models.Servicio import Servicio
+from model.models.Valoracion import Valoracion
+from model.models.Reparacion import Reparacion
+from model.models.ReparaNave import ReparaNave
+from model.models.ReparacionesDependientes import ReparacionesDependientes
 
 
 def listar(request):
