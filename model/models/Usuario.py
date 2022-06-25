@@ -9,6 +9,7 @@ class Usuario(models.Model):
         ('CL', 'Cliente'),
         ('AD', 'Administrador Instalaciones'),
         ('AA', 'Administrador Aeropuertos'),
-        ('AR', 'Administrador Reparaciones')
+        ('AR', 'Administrador Reparaciones'),
+        ('AG', 'Administrador General')
     )
-    role = models.CharField(max_length=2, choices=ROLE, default='US')
+    role = models.CharField(max_length=2, choices=ROLE, default='US', null=False)
