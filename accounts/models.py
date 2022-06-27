@@ -47,6 +47,26 @@ class Usuario(AbstractBaseUser, PermissionsMixin):
     objects = UserManager()
 
     USERNAME_FIELD = "email"
+    def can_see(self, data):
+        if self.role == 'AI':
+            if data == 'Instalaciones' or data == "Reparaciones":
+                return True
+        return False
+    def can_edit(self, data):
+        if self.role == 'AI':
+            if data == "Reparaciones":
+                return True
+        return False
+    def can_delete(self, data):
+        if self.role == 'AI':
+            if data == "Reparaciones":
+                return True
+        return False
+    def can_create(self, data):
+        if self.role == 'AI':
+            if data == "Reparaciones":
+                return True
+        return False
     
     def __str__(self):
             return self.email
