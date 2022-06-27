@@ -27,8 +27,8 @@
                 <td>{{c}}</td>
             {% endfor %}
             {%if tabla != "consulta"%}
-            <td><a href="edicionAeropuerto/{{a.id}}/{{tabla}}/{{campos}}" id ="editar" class="btn btn-info">Editar</a></td>
-            <td><a href="eliminarAeropuerto/{{a.id}}/{{tabla}}" class="btn btn-danger btnEliminacion">Eliminar</a></td>
+            <td><a href="edicion/{{a.id}}/{{tabla}}/{{campos}}" id ="editar" class="btn btn-info">Editar</a></td>
+            <td><a href="eliminar/{{a.id}}/{{tabla}}" class="btn btn-danger btnEliminacion">Eliminar</a></td>
             {% endif %}
           </tr>
           {% endfor %}

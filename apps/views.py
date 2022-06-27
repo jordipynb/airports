@@ -57,9 +57,9 @@ def para_listar(request):
     return {"campos": campos,"aeropuertos": listado,"tabla":data}
 
 def home(request):
-    return render(request, "gestionar_aeropuertos.html")
+    return render(request, "gestion.html")
 
-def registrarAeropuerto(request):   
+def registrar(request):   
     nombre = request.POST['nombre']
     direccion = request.POST['direccion']
     pos_Geo = request.POST['pos_Geo']
@@ -175,7 +175,7 @@ def registrarAeropuerto(request):
     messages.success(request, 'Registrado!')
     return redirect('/')
 
-def editarAeropuerto(request):
+def editar(request):
     codigo = request.POST['id']
     nombre = request.POST['nombre']
     direccion = request.POST['direccion']
@@ -356,7 +356,7 @@ def editarAeropuerto(request):
     messages.success(request, 'Actualizado!')
     return redirect('/')
 
-def edicionAeropuerto(request,codigo,tabla,campos):
+def edicion(request,codigo,tabla,campos):
     if(tabla=="Aeropuerto"):
         elemento = Aeropuerto.objects.get(id=codigo)
     elif(tabla=="Cliente"):
@@ -381,9 +381,9 @@ def edicionAeropuerto(request,codigo,tabla,campos):
         elemento= ReparaNave.objects.get(id=codigo)
     elif(tabla=="ReparacionesDependientes"):
         elemento= ReparacionesDependientes.objects.get(id=codigo)
-    return render(request, "edicion_de_aeropuertos.html", {"elemento": elemento,"tabla":tabla,"campos":campos})
+    return render(request, "edicion.html", {"elemento": elemento,"tabla":tabla,"campos":campos})
 
-def eliminarAeropuerto(request,codigo,tabla):
+def eliminar(request,codigo,tabla):
     if tabla== "Aeropuerto":
         elemento = Aeropuerto.objects.get(id=codigo)
         elemento.delete()
