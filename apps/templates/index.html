@@ -18,7 +18,9 @@
         <div class="d-flex">
           <h5 class="mr-4 text-white mt-2">Hello {{user.email}}</h5>
           <a class="btn btn-danger mr-4" href="{% url 'logout' %}">Logout</a>
-          <!--<a class="btn btn-info" href="/admin">Admin Panel</a>|-->
+          {% if user.role == "AG" %}
+            <a class="btn btn-info" href="/admin">Admin Panel</a>
+          {% endif %}
         </div>
       {% else %}
         <div>
@@ -27,13 +29,16 @@
         </div>
       {% endif %}
     </nav>
-    {% if user.is_authenticated %}
     <div class="container py-4">
+    {% if user.is_authenticated %}
         {% block body %}
 
         {% endblock %}
+    {% else %}
+      <h5>Usted no se ha logueado aun</h5>
+    {% endif %}
     </div>
-      {% endif %}
+
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
     </script>
