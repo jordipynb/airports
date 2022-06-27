@@ -1,11 +1,15 @@
 from django.urls import path
-from . import views
-
+from .views.home import home
+from .views.listar import listar
+from .views.registrar import registrar
+from .views.edicion import edicion
+from .views.editar import editar
+from .views.eliminar import eliminar
 urlpatterns = [
-    path('', views.home),
-    path('listar/', views.listar),
-    path('registrar/', views.registrar),
-    path('listar/edicion/<codigo>/<tabla>/<campos>', views.edicion),
-    path('editar/', views.editar),
-    path('listar/eliminar/<codigo>/<tabla>', views.eliminar),
+    path('', home),
+    path('listar/', listar),
+    path('registrar/', registrar),
+    path('listar/edicion/<codigo>/<tabla>/<campos>', edicion),
+    path('editar/', editar),
+    path('listar/eliminar/<codigo>/<tabla>', eliminar),
 ]
