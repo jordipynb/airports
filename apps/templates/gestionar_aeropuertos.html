@@ -17,18 +17,42 @@
       <div class="card-body">
         <div class="form-group">
           <select id="data" name="data" class="form-control" maxlength="50">
+           {% if user.role == "AG" %}
            <option value="Aeropuerto" selected>Aeropuerto</option>
+           {% endif %}
+           {% if user.role == "AG" %}
            <option value="Cliente">Cliente</option>
+           {% endif %}
+           {% if user.role == "AG" %}
            <option value="Nave">Nave</option>
-           <option value="Plazas">Plazas</option>
+           {% endif %}
+           {% if user.role == "AG" %}
+           <option value="Admin_de_Aeropuerto">Administrador de Aeropuerto</option>
+           {% endif %}
+           {% if user.role == "AA" %}
            <option value="Vuelo">Vuelo</option>
+           {% endif %}
+           {% if user.role == "AA" %}
            <option value="Arribo">Arribo</option>
+           {% endif %}
+           {% if user.role == "AD" %}
            <option value="Instalacion">Instalacion</option>
+           {% endif %}
+           {% if user.role == "AD" %}
            <option value="Servicio">Servicio</option>
+           {% endif %}
+           {% if user.role == "AD" %}
            <option value="Valoracion">Valoracion</option>
+           {% endif %}
+           {% if user.role == "AA" %}
            <option value="Reparacion">Reparacion</option>
+           {% endif %}
+           {% if user.role == "AD" %}
            <option value="ReparaNave">Repara Nave</option>
+           {% endif %}
+           {% if user.role == "AA" %}
            <option value="ReparacionesDependientes">Reparaciones Dependientes</option>
+           {% endif %}
           </select>
         </div>
         <div class="form-group">
@@ -274,3 +298,4 @@
     </div>
   </div>
 {% endblock %}
+

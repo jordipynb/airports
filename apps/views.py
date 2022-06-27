@@ -14,6 +14,9 @@ from model.models.Reparacion import Reparacion
 from model.models.ReparaNave import ReparaNave
 from model.models.ReparacionesDependientes import ReparacionesDependientes
 
+from accounts.models import Usuario
+    
+
 
 def listar(request):
     dict=para_listar(request)
@@ -419,3 +422,4 @@ def eliminarAeropuerto(request,codigo,tabla):
         elemento.delete()
     messages.success(request, '¡Eliminado!')
     return redirect('/')
+
