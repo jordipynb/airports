@@ -1,9 +1,8 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import redirect
 from django.contrib import messages
 
 from model.models.Aeropuerto import Aeropuerto
 from model.models.Cliente import Cliente
-from model.models.Plazas import Plazas
 from model.models.Nave import Nave
 from model.models.Vuelo import Vuelo
 from model.models.Arribo import Arribo
@@ -21,15 +20,12 @@ def registrar(request):
     nom_C = request.POST['Nom_C']
     tipo_C = request.POST['Tipo_C']
     nacionalidad = request.POST['Nacionalidad']
-    data = request.POST['data'] 
+    data = request.POST['data']
     no_Mat = request.POST['No_Mat']
     clasific = request.POST['Clasific']
     capacidad = request.POST['Capacidad']
     no_Trip = request.POST['No_Trip']
     id_D = request.POST['Id_D']
-    clasificP = request.POST['ClasificP']
-    capacidadP = request.POST['CapacidadP']
-    no_TripP = request.POST['No_TripP']
     total_P = request.POST['Total_P']
     no_MatV = request.POST['No_MatV']
     fecha_inV = request.POST['Fecha_inV']
@@ -79,12 +75,8 @@ def registrar(request):
         Nom_C=nom_C,Tipo_C=tipo_C,Nacionalidad=nacionalidad)
     elif data == "Nave":
         cliente = Cliente.objects.get(id=id_D)
-        plazas = Plazas.objects.get(Clasific=clasific, No_Trip=no_Trip, Capacidad=capacidad)
         nave = Nave.objects.create(
-        No_Mat=no_Mat,Clasific=clasific,Capacidad=capacidad,No_Trip=no_Trip,Id_D=cliente,Id_Plazas=plazas)
-    elif data == "Plazas":
-        plazas = Plazas.objects.create(
-        Clasific=clasificP,No_Trip=no_TripP,Capacidad=capacidadP,Total_P=total_P)
+        No_Mat=no_Mat,Clasific=clasific,Capacidad=capacidad,No_Trip=no_Trip,Total_P=total_P,Id_D=cliente)
     elif data == "Vuelo":
         nave = Nave.objects.get(No_Mat=no_MatV)
         aeropuerto = Aeropuerto.objects.get(id=id_AV)
@@ -129,3 +121,4 @@ def registrar(request):
         Id_Rep=reparacion1,Id_RepDep=reparacion2,Id_I=id_IRD,Codigo=codigoRD,Tipo=tipoRD,Id_IDep=id_IRDD,Codigo_Dep=codigoRDD,Tipo_Dep=tipoRDD)
     messages.success(request, 'Registrado!')
     return redirect('/')
+

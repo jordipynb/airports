@@ -3,7 +3,6 @@ from django.shortcuts import redirect
 
 from model.models.Aeropuerto import Aeropuerto
 from model.models.Cliente import Cliente
-from model.models.Plazas import Plazas
 from model.models.Nave import Nave
 from model.models.Vuelo import Vuelo
 from model.models.Arribo import Arribo
@@ -23,9 +22,6 @@ def eliminar(request,codigo,tabla):
         elemento.delete()
     elif tabla== "Nave":
         elemento = Nave.objects.get(id=codigo)
-        elemento.delete()
-    elif tabla== "Plazas":
-        elemento = Plazas.objects.get(id=codigo)
         elemento.delete()
     elif tabla== "Vuelo":
         elemento = Vuelo.objects.get(id=codigo)
@@ -53,3 +49,4 @@ def eliminar(request,codigo,tabla):
         elemento.delete()
     messages.success(request, '¡Eliminado!')
     return redirect('/')
+

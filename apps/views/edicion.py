@@ -2,7 +2,6 @@ from django.shortcuts import render
 
 from model.models.Aeropuerto import Aeropuerto
 from model.models.Cliente import Cliente
-from model.models.Plazas import Plazas
 from model.models.Nave import Nave
 from model.models.Vuelo import Vuelo
 from model.models.Arribo import Arribo
@@ -20,8 +19,6 @@ def edicion(request,codigo,tabla,campos):
         elemento= Cliente.objects.get(id=codigo)
     elif(tabla=="Nave"):
         elemento= Nave.objects.get(id=codigo)
-    elif(tabla=="Plazas"):
-        elemento= Plazas.objects.get(id=codigo)
     elif(tabla=="Vuelo"):
         elemento= Vuelo.objects.get(id=codigo)
     elif(tabla=="Arribo"):
@@ -39,3 +36,4 @@ def edicion(request,codigo,tabla,campos):
     elif(tabla=="ReparacionesDependientes"):
         elemento= ReparacionesDependientes.objects.get(id=codigo)
     return render(request, "edicion.html", {"elemento": elemento,"tabla":tabla,"campos":campos})
+

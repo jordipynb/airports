@@ -3,7 +3,6 @@ from django.contrib import messages
 
 from model.models.Aeropuerto import Aeropuerto
 from model.models.Cliente import Cliente
-from model.models.Plazas import Plazas
 from model.models.Nave import Nave
 from model.models.Vuelo import Vuelo
 from model.models.Arribo import Arribo
@@ -27,8 +26,6 @@ def para_listar(request):
         listado = Cliente.objects.all()
     elif data == "Nave":
         listado = Nave.objects.all()
-    elif data == "Plazas":
-        listado = Plazas.objects.all()
     elif data == "Vuelo":
         listado = Vuelo.objects.all()
     elif data == "Arribo":
@@ -51,3 +48,4 @@ def para_listar(request):
         campos=a.campos()
         break
     return {"campos": campos,"aeropuertos": listado,"tabla":data}
+
