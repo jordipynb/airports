@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.contrib import messages
 
 from model.models.Aeropuerto import Aeropuerto
@@ -18,34 +18,48 @@ def listar(request):
     return render(request, "listados.html", dict)
 
 def para_listar(request):
-    data = request.POST['data']
+    data = str(request.GET['data'])
     listado=[]
+    name = ""
     if data == "Aeropuerto":
         listado = Aeropuerto.objects.all()
+        name = "Aeropuertos" 
     elif data == "Cliente":
         listado = Cliente.objects.all()
+        name = "Clientes"
     elif data == "Nave":
         listado = Nave.objects.all()
+        name = "Naves"
     elif data == "Vuelo":
         listado = Vuelo.objects.all()
+        name = "Vuelos"
     elif data == "Arribo":
         listado = Arribo.objects.all()
+        name = "Arribos"
     elif data == "Instalacion":
         listado = Instalacion.objects.all()
+        name = "Instalaciones"
     elif data == "Servicio":
         listado = Servicio.objects.all()
+        name = "Servicios"
     elif data == "Valoracion":
         listado = Valoracion.objects.all()
+        name = "Valoraciones"
     elif data == "Reparacion":
         listado = Reparacion.objects.all()
+        name = "Reparaciones"
     elif data == "ReparaNave":
         listado = ReparaNave.objects.all()
+        name = "Reparaciones de Naves"
     elif data == "ReparacionesDependientes":
         listado = ReparacionesDependientes.objects.all()
-    messages.success(request, 'Listados!')
+        name = "Reparaciones Dependientes"
+    #messages.success(request, 'Listados!')
     campos=[]
     for a in listado:
-        campos=a.campos()
-        break
-    return {"campos": campos,"aeropuertos": listado,"tabla":data}
+         campos=a.campos()
+         break
+    print(len(campos))
+    
+    return {"campos": campos,"aeropuertos": listado,"tabla":data, "name": name}
 

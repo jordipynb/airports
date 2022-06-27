@@ -274,7 +274,7 @@
             <button type="submit" id ="guardar" class="btn btn-success btn-block text-white">Guardar</button>
           </div>
         </form>
-        <form action="/listar/" method="POST">{% csrf_token %}
+        <form action="/listar" method="GET">{% csrf_token %}
           <div hidden class="form-group">
             <input type="text" id="tabla" name="data" class="formulario Aeropuerto form-control" maxlength="100" >
           </div>

@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path, re_path
 from .views.home import home
 from .views.listar import listar
 from .views.registrar import registrar
