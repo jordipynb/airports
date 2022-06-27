@@ -11,8 +11,7 @@ class Nave(models.Model):
     Id_D = models.ForeignKey(Cliente, verbose_name="ID Dueño",null=False,on_delete=models.CASCADE)
 
     def __str__(self):
-        texto = "{0}"
-        return texto.format(self.No_Mat)
+        return self.No_Mat + " " + self.Clasific
     def __iter__(self):
         for field_name in self._meta.fields:
             if field_name.verbose_name == "ID": continue

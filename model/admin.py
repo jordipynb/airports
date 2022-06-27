@@ -13,7 +13,6 @@ from model.models.Reparacion import Reparacion
 from model.models.ReparaNave import ReparaNave
 from model.models.ReparacionesDependientes import ReparacionesDependientes
 
-from model.models.Usuario import Usuario
 
 admin.site.register(Aeropuerto)
 admin.site.register(Cliente)
@@ -28,4 +27,3 @@ admin.site.register(Reparacion)
 admin.site.register(ReparaNave)
 admin.site.register(ReparacionesDependientes)
 
-admin.site.register(Usuario)

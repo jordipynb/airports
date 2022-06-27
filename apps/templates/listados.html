@@ -3,39 +3,37 @@
 {% block title %} Gestión de Aeropuertos {% endblock %}
 
 {% block body %}
-<div hidden class="form-group">
-    <input type="text" id="data" name="data" value ="Aeropuerto" class="form-control" placeholder="Nombre"
-        maxlength="50" >
-</div>
-<div class="col-sm-12 col-md-6 col-lg-8 col-xl-8">
+  <div hidden class="form-group">
+      <input type="text" id="data" name="data" value ="Aeropuerto" class="form-control" placeholder="Nombre"
+          maxlength="50" >
+  </div>
+  <div class="col-sm-12 col-md-6 col-lg-8 col-xl-8">
     <h1>Listado</h1>
-    <div class="table-responsive py-2">
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    {% for a in campos %}
-                      <th>{{a}}</th> 
-                    {% endfor %}
-                    {%if tabla != "consulta"%}
-                    <th colspan="2">Opciones</th>
-                    {% endif %}
-                </tr>
-            </thead>
-            <tbody>
-                {% for a in aeropuertos %}
-                <tr>
-                    {% for c in a %}
-                        <td>{{c}}</td>
-                    {% endfor %}
-                    {%if tabla != "consulta"%}
-                    <td><a href="edicionAeropuerto/{{a.id}}/{{tabla}}/{{campos}}" id ="editar" class="btn btn-info">Editar</a></td>
-                    <td><a href="eliminarAeropuerto/{{a.id}}/{{tabla}}" class="btn btn-danger btnEliminacion">Eliminar</a></td>
-                    {% endif %}
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            {% for a in campos %}
+              <th>{{a}}</th> 
+            {% endfor %}
+            {%if tabla != "consulta"%}
+            <th colspan="2">Opciones</th>
+            {% endif %}
+          </tr>
+        </thead>
+        <tbody>
+          {% for a in aeropuertos %}
+          <tr>
+            {% for c in a %}
+                <td>{{c}}</td>
+            {% endfor %}
+            {%if tabla != "consulta"%}
+            <td><a href="edicionAeropuerto/{{a.id}}/{{tabla}}/{{campos}}" id ="editar" class="btn btn-info">Editar</a></td>
+            <td><a href="eliminarAeropuerto/{{a.id}}/{{tabla}}" class="btn btn-danger btnEliminacion">Eliminar</a></td>
+            {% endif %}
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
     </div>
-</div>
-</div>
+  </div>
 {% endblock %}

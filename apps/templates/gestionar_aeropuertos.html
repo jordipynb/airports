@@ -3,266 +3,274 @@
 {% block title %} Gestión de Aeropuertos {% endblock %}
 
 {% block body %}
-    <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
-        {% if messages %}
-        {% for message in messages %}
-        <div class="alert alert-dismissible alert-success">
-            <button type="button" class="close" data-dismiss="alert">&times;</button>
-            <strong class="text-dark">{{ message }}</strong>
-        </div>
-        {% endfor %}
-        {% endif %}
-        <h2 id ="encabezado">Gestión</h2>
-        <div class="card">
-            <div class="card-body">
-                    <div class="form-group">
-                        <input type="text" id="data" name="data" value ="Aeropuerto" class="form-control" placeholder="Nombre"
-                            maxlength="50" >
-                    </div>
-                    <div class="form-group">
-                        <button id="aceptar" class="btn btn-success btn-block text-white">Aceptar</button>
-                    </div>
-
-                <form action="/registrarAeropuerto/" method="POST">{% csrf_token %}
-                    <div class="form-group">
-                        <input type="text" id="nombre" name="nombre" class="formulario Aeropuerto form-control" placeholder="Nombre"
-                            maxlength="50" >
-                    </div>
-                    <div class="form-group">
-                        <input type="text" id="direccion" name="direccion" class="formulario Aeropuerto form-control" placeholder="Direccion"
-                            maxlength="100" >
-                    </div>
-                    <div hidden class="form-group">
-                        <input type="text" id="hidden" name="data" class="formulario Aeropuerto form-control" placeholder="Direccion"
-                            maxlength="100" >
-                    </div>
-                    <div class="form-group">
-                        <input type="text" id="pos_Geo" name="pos_Geo" class="formulario Aeropuerto form-control" placeholder="Posicion Geografica"
-                            >
-                    </div>
-                    <div class="form-group">
-                        <input type="text" id="nom_C" name="Nom_C"  class="formulario Cliente form-control" placeholder="Nombre"
-                            >
-                    </div>
-                    <div class="form-group">
-                        <input type="text" id="nacionalidad" name="Nacionalidad"  class="formulario Cliente form-control" placeholder="Nacionalidad"
-                            >
-                    </div>
-                    <div class="form-group">
-                        <input type="text" id="tipoC" name="Tipo_C"  class="formulario Cliente form-control" placeholder="Tipo"
-                            >
-                    </div>
-                    <div class="form-group">
-                        <input type="text" id="no_Mat" name="No_Mat"  class="formulario Nave form-control" placeholder="No.Matricula"
-                            >
-                    </div>
-                    <div class="form-group">
-                        <input type="text" id="clasific" name="Clasific"  class="formulario Nave form-control" placeholder="Clasificacion"
-                            >
-                    </div>
-                    <div class="form-group">
-                        <input type="text" id="capacidad" name="Capacidad"  class="formulario Nave form-control" placeholder="Capacidad"
-                            >
-                    </div>
-                    <div class="form-group">
-                        <input type="text" id="no_Trip" name="No_Trip"  class="formulario Nave form-control" placeholder="No.Tripulantes"
-                            >
-                    </div>
-                    <div class="form-group">
-                        <input type="text" id="id_D" name="Id_D"  class="formulario Nave form-control" placeholder="Dueño"
-                            >
-                    </div>
-                    <div class="form-group">
-                        <input type="text" id="clasificP" name="ClasificP"  class="formulario Plazas form-control" placeholder="Clasificacion"
-                            >
-                    </div>
-                    <div class="form-group">
-                        <input type="text" id="no_TripP" name="No_TripP"  class="formulario Plazas form-control" placeholder="No.Tripulantes"
-                            >
-                    </div>
-                    <div class="form-group">
-                        <input type="text" id="capacidadP" name="CapacidadP"  class="formulario Plazas form-control" placeholder="Capacidad"
-                            >
-                    </div>
-                    <div class="form-group">
-                        <input type="text" id="total_P" name="Total_P"  class="formulario Plazas form-control" placeholder="Pasajeros"
-                            >
-                    </div>
-                    <div class="form-group">
-                        <input type="text" id="no_MatV" name="No_MatV"  class="formulario Vuelo form-control" placeholder="No.Matricula"
-                            >
-                    </div>
-                    <div class="form-group">
-                        <input type="datetime-local" id="fecha_inV" name="Fecha_inV"  class="formulario Vuelo form-control"
-                            >
-                    </div>
-                    <div class="form-group">
-                        <input type="text" id="id_AV" name="Id_AV"  class="formulario Vuelo form-control" placeholder="Aeropuerto"
-                            >
-                    </div>
-                    <div class="form-group">
-                        <input type="datetime-local" id="fecha_outV" name="Fecha_outV"  class="formulario Vuelo form-control"
-                            >
-                    </div>
-                    <div class="form-group">
-                        <input type="text" id="estadoNave" name="EstadoNave"  class="formulario Vuelo form-control" placeholder="Estado"
-                            >
-                    </div>
-                    <div class="form-group">
-                        <input type="text" id="no_MatA" name="No_MatA"  class="formulario Arribo form-control" placeholder="No.Matricula"
-                            >
-                    </div>
-                    <div class="form-group">
-                        <input type="datetime-local" id="fecha_inA" name="Fecha_inA"  class="formulario Arribo form-control"
-                            >
-                    </div>
-                    <div class="form-group">
-                        <input type="text" id="id_CA" name="Id_CA"  class="formulario Arribo form-control" placeholder="Cliente"
-                            >
-                    </div>
-                    <div class="form-group">
-                        <input type="text" id="caracter" name="Caracter"  class="formulario Arribo form-control" placeholder="Caracter"
-                            >
-                    </div>
-                    <div class="form-group">
-                        <input type="text" id="nom_I" name="Nom_I"  class="formulario Instalacion form-control" placeholder="Nombre"
-                            >
-                    </div>
-                    <div class="form-group">
-                        <input type="text" id="tipo_I" name="Tipo_I"  class="formulario Instalacion form-control" placeholder="Tipo"
-                            >
-                    </div>
-                    <div class="form-group">
-                        <input type="text" id="ubicacion" name="Ubicacion"  class="formulario Instalacion form-control" placeholder="Ubicacion"
-                            >
-                    </div>
-                    <div class="form-group">
-                        <input type="text" id="id_AI" name="Id_AI"  class="formulario Instalacion form-control" placeholder="Aeropuerto"
-                            >
-                    </div>
-                    <div class="form-group">
-                        <input type="text" id="id_IS" name="Id_IS"  class="formulario Servicio form-control" placeholder="Instalacion"
-                            >
-                    </div>
-                    <div class="form-group">
-                        <input type="text" id="codigoS" name="CodigoS"  class="formulario Servicio form-control" placeholder="Codigo"
-                            >
-                    </div>
-                    <div class="form-group">
-                        <input type="text" id="precio" name="Precio"  class="formulario Servicio form-control" placeholder="Precio"
-                            >
-                    </div>
-                    <div class="form-group">
-                        <input type="text" id="descripcion" name="Descripcion"  class="formulario Servicio form-control" placeholder="Descripcion"
-                            >
-                    </div>
-                    <div class="form-group">
-                        <input type="text" id="id_IV" name="Id_IV"  class="formulario Valoracion form-control" placeholder="Instalacion"
-                            >
-                    </div>
-                    <div class="form-group">
-                        <input type="text" id="codigoV" name="CodigoV"  class="formulario Valoracion form-control" placeholder="Codigo"
-                            >
-                    </div>
-                    <div class="form-group">
-                        <input type="text" id="no_MatVal" name="No_MatVal"  class="formulario Valoracion form-control" placeholder="No.Matricula"
-                            >
-                    </div>
-                    <div class="form-group">
-                        <input type="datetime-local" id="fecha_inVal" name="Fecha_inVal"  class="formulario Valoracion form-control"
-                            >
-                    </div>
-                    <div class="form-group">
-                        <input type="text" id="id_CV" name="Id_CV"  class="formulario Valoracion form-control" placeholder="Cliente"
-                            >
-                    </div>
-                    <div class="form-group">
-                        <input type="text" id="valoracionV" name="ValoracionV"  class="formulario Valoracion form-control" placeholder="Valoracion"
-                            >
-                    </div>
-                    <div class="form-group">
-                        <input type="text" id="id_IR" name="Id_IR"  class="formulario Reparacion form-control" placeholder="Instalacion"
-                            >
-                    </div>
-                    <div class="form-group">
-                        <input type="text" id="codigoR" name="CodigoR"  class="formulario Reparacion form-control" placeholder="Codigo"
-                            >
-                    </div>
-                    <div class="form-group">
-                        <input type="text" id="tipoR" name="TipoR"  class="formulario Reparacion form-control" placeholder="Tipo"
-                            >
-                    </div>
-                    <div class="form-group">
-                        <input type="text" id="id_IRN" name="Id_IRN"  class="formulario ReparaNave form-control" placeholder="Instalacion"
-                            >
-                    </div>
-                    <div class="form-group">
-                        <input type="text" id="codigoRN" name="CodigoRN"  class="formulario ReparaNave form-control" placeholder="Codigo"
-                            >
-                    </div>
-                    <div class="form-group">
-                        <input type="text" id="tipoRN" name="TipoRN"  class="formulario ReparaNave form-control" placeholder="Tipo"
-                            >
-                    </div>
-                    <div class="form-group">
-                        <input type="text" id="no_MatRN" name="No_MatRN"  class="formulario ReparaNave form-control" placeholder="No.Matricula"
-                            >
-                    </div>
-                    <div class="form-group">
-                        <input type="datetime-local" id="fecha_inRN" name="Fecha_inRN"  class="formulario ReparaNave form-control"
-                            >
-                    </div>
-                    <div class="form-group">
-                        <input type="datetime-local" id="fecha_Ini" name="Fecha_Ini"  class="formulario ReparaNave form-control"
-                            >
-                    </div>
-                    <div class="form-group">
-                        <input type="datetime-local" id="tiempo_P" name="Tiempo_P"  class="formulario ReparaNave form-control"
-                            >
-                    </div>
-                    <div class="form-group">
-                        <input type="datetime-local" id="fecha_Fin" name="Fecha_Fin"  class="formulario ReparaNave form-control"
-                            >
-                    </div>
-                    <div class="form-group">
-                        <input type="text" id="id_IRD" name="Id_IRD"  class="formulario ReparacionesDependientes form-control" placeholder="Instalacion"
-                            >
-                    </div>
-                    <div class="form-group">
-                        <input type="text" id="codigoRD" name="CodigoRD"  class="formulario ReparacionesDependientes form-control" placeholder="Codigo"
-                            >
-                    </div>
-                    <div class="form-group">
-                        <input type="text" id="tipoRD" name="TipoRD"  class="formulario ReparacionesDependientes form-control" placeholder="Tipo"
-                            >
-                    </div>
-                    <div class="form-group">
-                        <input type="text" id="id_IRDD" name="Id_IRDD"  class="formulario ReparacionesDependientes form-control" placeholder="Instalacion Dependiente"
-                            >
-                    </div>
-                    <div class="form-group">
-                        <input type="text" id="codigoRDD" name="CodigoRDD"  class="formulario ReparacionesDependientes form-control" placeholder="Codigo Dependiente"
-                            >
-                    </div>
-                    <div class="form-group">
-                        <input type="text" id="tipoRDD" name="TipoRDD"  class="formulario ReparacionesDependientes form-control" placeholder="Tipo Dependiente"
-                            >
-                    </div>
-
-                    <div class="form-group">
-                        <button type="submit" id ="guardar" class="btn btn-success btn-block text-white">Guardar</button>
-                    </div>
-                </form>
-                <form action="/listar/" method="POST">{% csrf_token %}
-                    <div hidden class="form-group">
-                        <input type="text" id="tabla" name="data" class="formulario Aeropuerto form-control" 
-                            maxlength="100" >
-                    </div>
-                    <div class="form-group">
-                        <button type="submit" id ="listado" class="btn btn-success btn-block text-white">Mostrar</button>
-                    </div>
-                </form>
-            </div>
-        </div>
+  <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-dismissible alert-success">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+      <strong class="text-dark">{{ message }}</strong>
     </div>
+    {% endfor %}
+    {% endif %}
+    <h2 id ="encabezado">Gestión</h2>
+    <div class="card">
+      <div class="card-body">
+        <div class="form-group">
+          <select id="data" name="data" class="form-control" maxlength="50">
+           <option value="Aeropuerto" selected>Aeropuerto</option>
+           <option value="Cliente">Cliente</option>
+           <option value="Nave">Nave</option>
+           <option value="Plazas">Plazas</option>
+           <option value="Vuelo">Vuelo</option>
+           <option value="Arribo">Arribo</option>
+           <option value="Instalacion">Instalacion</option>
+           <option value="Servicio">Servicio</option>
+           <option value="Valoracion">Valoracion</option>
+           <option value="Reparacion">Reparacion</option>
+           <option value="ReparaNave">Repara Nave</option>
+           <option value="ReparacionesDependientes">Reparaciones Dependientes</option>
+          </select>
+        </div>
+        <div class="form-group">
+            <button id="aceptar" class="btn btn-success btn-block text-white">Aceptar</button>
+        </div>
+
+        <form action="/registrarAeropuerto/" method="POST">{% csrf_token %}
+          <div class="form-group">
+              <input type="text" id="nombre" name="nombre" class="formulario Aeropuerto form-control" placeholder="Nombre"
+                  maxlength="50" >
+          </div>
+          <div class="form-group">
+              <input type="text" id="direccion" name="direccion" class="formulario Aeropuerto form-control" placeholder="Direccion"
+                  maxlength="100" >
+          </div>
+          <div hidden class="form-group">
+              <input type="text" id="hidden" name="data" class="formulario Aeropuerto form-control" placeholder="Direccion"
+                  maxlength="100" >
+          </div>
+          <div class="form-group">
+              <input type="text" id="pos_Geo" name="pos_Geo" class="formulario Aeropuerto form-control" placeholder="Posicion Geografica"
+                  >
+          </div>
+          <div class="form-group">
+              <input type="text" id="nom_C" name="Nom_C"  class="formulario Cliente form-control" placeholder="Nombre"
+                  >
+          </div>
+          <div class="form-group">
+              <input type="text" id="nacionalidad" name="Nacionalidad"  class="formulario Cliente form-control" placeholder="Nacionalidad"
+                  >
+          </div>
+          <div class="form-group">
+              <input type="text" id="tipoC" name="Tipo_C"  class="formulario Cliente form-control" placeholder="Tipo"
+                  >
+          </div>
+          <div class="form-group">
+              <input type="text" id="no_Mat" name="No_Mat"  class="formulario Nave form-control" placeholder="No.Matricula"
+                  >
+          </div>
+          <div class="form-group">
+              <input type="text" id="clasific" name="Clasific"  class="formulario Nave form-control" placeholder="Clasificacion"
+                  >
+          </div>
+          <div class="form-group">
+              <input type="text" id="capacidad" name="Capacidad"  class="formulario Nave form-control" placeholder="Capacidad"
+                  >
+          </div>
+          <div class="form-group">
+              <input type="text" id="no_Trip" name="No_Trip"  class="formulario Nave form-control" placeholder="No.Tripulantes"
+                  >
+          </div>
+          <div class="form-group">
+              <input type="text" id="id_D" name="Id_D"  class="formulario Nave form-control" placeholder="Dueño"
+                  >
+          </div>
+          <div class="form-group">
+              <input type="text" id="clasificP" name="ClasificP"  class="formulario Plazas form-control" placeholder="Clasificacion"
+                  >
+          </div>
+          <div class="form-group">
+              <input type="text" id="no_TripP" name="No_TripP"  class="formulario Plazas form-control" placeholder="No.Tripulantes"
+                  >
+          </div>
+          <div class="form-group">
+              <input type="text" id="capacidadP" name="CapacidadP"  class="formulario Plazas form-control" placeholder="Capacidad"
+                  >
+          </div>
+          <div class="form-group">
+              <input type="text" id="total_P" name="Total_P"  class="formulario Plazas form-control" placeholder="Pasajeros"
+                  >
+          </div>
+          <div class="form-group">
+              <input type="text" id="no_MatV" name="No_MatV"  class="formulario Vuelo form-control" placeholder="No.Matricula"
+                  >
+          </div>
+          <div class="form-group">
+              <input type="datetime-local" id="fecha_inV" name="Fecha_inV"  class="formulario Vuelo form-control"
+                  >
+          </div>
+          <div class="form-group">
+              <input type="text" id="id_AV" name="Id_AV"  class="formulario Vuelo form-control" placeholder="Aeropuerto"
+                  >
+          </div>
+          <div class="form-group">
+              <input type="datetime-local" id="fecha_outV" name="Fecha_outV"  class="formulario Vuelo form-control"
+                  >
+          </div>
+          <div class="form-group">
+              <input type="text" id="estadoNave" name="EstadoNave"  class="formulario Vuelo form-control" placeholder="Estado"
+                  >
+          </div>
+          <div class="form-group">
+              <input type="text" id="no_MatA" name="No_MatA"  class="formulario Arribo form-control" placeholder="No.Matricula"
+                  >
+          </div>
+          <div class="form-group">
+              <input type="datetime-local" id="fecha_inA" name="Fecha_inA"  class="formulario Arribo form-control"
+                  >
+          </div>
+          <div class="form-group">
+              <input type="text" id="id_CA" name="Id_CA"  class="formulario Arribo form-control" placeholder="Cliente"
+                  >
+          </div>
+          <div class="form-group">
+              <input type="text" id="caracter" name="Caracter"  class="formulario Arribo form-control" placeholder="Caracter"
+                  >
+          </div>
+          <div class="form-group">
+              <input type="text" id="nom_I" name="Nom_I"  class="formulario Instalacion form-control" placeholder="Nombre"
+                  >
+          </div>
+          <div class="form-group">
+              <input type="text" id="tipo_I" name="Tipo_I"  class="formulario Instalacion form-control" placeholder="Tipo"
+                  >
+          </div>
+          <div class="form-group">
+              <input type="text" id="ubicacion" name="Ubicacion"  class="formulario Instalacion form-control" placeholder="Ubicacion"
+                  >
+          </div>
+          <div class="form-group">
+              <input type="text" id="id_AI" name="Id_AI"  class="formulario Instalacion form-control" placeholder="Aeropuerto"
+                  >
+          </div>
+          <div class="form-group">
+              <input type="text" id="id_IS" name="Id_IS"  class="formulario Servicio form-control" placeholder="Instalacion"
+                  >
+          </div>
+          <div class="form-group">
+              <input type="text" id="codigoS" name="CodigoS"  class="formulario Servicio form-control" placeholder="Codigo"
+                  >
+          </div>
+          <div class="form-group">
+              <input type="text" id="precio" name="Precio"  class="formulario Servicio form-control" placeholder="Precio"
+                  >
+          </div>
+          <div class="form-group">
+              <input type="text" id="descripcion" name="Descripcion"  class="formulario Servicio form-control" placeholder="Descripcion"
+                  >
+          </div>
+          <div class="form-group">
+              <input type="text" id="id_IV" name="Id_IV"  class="formulario Valoracion form-control" placeholder="Instalacion"
+                  >
+          </div>
+          <div class="form-group">
+              <input type="text" id="codigoV" name="CodigoV"  class="formulario Valoracion form-control" placeholder="Codigo"
+                  >
+          </div>
+          <div class="form-group">
+              <input type="text" id="no_MatVal" name="No_MatVal"  class="formulario Valoracion form-control" placeholder="No.Matricula"
+                  >
+          </div>
+          <div class="form-group">
+              <input type="datetime-local" id="fecha_inVal" name="Fecha_inVal"  class="formulario Valoracion form-control"
+                  >
+          </div>
+          <div class="form-group">
+              <input type="text" id="id_CV" name="Id_CV"  class="formulario Valoracion form-control" placeholder="Cliente"
+                  >
+          </div>
+          <div class="form-group">
+              <input type="text" id="valoracionV" name="ValoracionV"  class="formulario Valoracion form-control" placeholder="Valoracion"
+                  >
+          </div>
+          <div class="form-group">
+              <input type="text" id="id_IR" name="Id_IR"  class="formulario Reparacion form-control" placeholder="Instalacion"
+                  >
+          </div>
+          <div class="form-group">
+              <input type="text" id="codigoR" name="CodigoR"  class="formulario Reparacion form-control" placeholder="Codigo"
+                  >
+          </div>
+          <div class="form-group">
+              <input type="text" id="tipoR" name="TipoR"  class="formulario Reparacion form-control" placeholder="Tipo"
+                  >
+          </div>
+          <div class="form-group">
+              <input type="text" id="id_IRN" name="Id_IRN"  class="formulario ReparaNave form-control" placeholder="Instalacion"
+                  >
+          </div>
+          <div class="form-group">
+              <input type="text" id="codigoRN" name="CodigoRN"  class="formulario ReparaNave form-control" placeholder="Codigo"
+                  >
+          </div>
+          <div class="form-group">
+              <input type="text" id="tipoRN" name="TipoRN"  class="formulario ReparaNave form-control" placeholder="Tipo"
+                  >
+          </div>
+          <div class="form-group">
+              <input type="text" id="no_MatRN" name="No_MatRN"  class="formulario ReparaNave form-control" placeholder="No.Matricula"
+                  >
+          </div>
+          <div class="form-group">
+              <input type="datetime-local" id="fecha_inRN" name="Fecha_inRN"  class="formulario ReparaNave form-control"
+                  >
+          </div>
+          <div class="form-group">
+              <input type="datetime-local" id="fecha_Ini" name="Fecha_Ini"  class="formulario ReparaNave form-control"
+                  >
+          </div>
+          <div class="form-group">
+              <input type="datetime-local" id="tiempo_P" name="Tiempo_P"  class="formulario ReparaNave form-control"
+                  >
+          </div>
+          <div class="form-group">
+              <input type="datetime-local" id="fecha_Fin" name="Fecha_Fin"  class="formulario ReparaNave form-control"
+                  >
+          </div>
+          <div class="form-group">
+              <input type="text" id="id_IRD" name="Id_IRD"  class="formulario ReparacionesDependientes form-control" placeholder="Instalacion"
+                  >
+          </div>
+          <div class="form-group">
+              <input type="text" id="codigoRD" name="CodigoRD"  class="formulario ReparacionesDependientes form-control" placeholder="Codigo"
+                  >
+          </div>
+          <div class="form-group">
+              <input type="text" id="tipoRD" name="TipoRD"  class="formulario ReparacionesDependientes form-control" placeholder="Tipo"
+                  >
+          </div>
+          <div class="form-group">
+              <input type="text" id="id_IRDD" name="Id_IRDD"  class="formulario ReparacionesDependientes form-control" placeholder="Instalacion Dependiente"
+                  >
+          </div>
+          <div class="form-group">
+            <input type="text" id="codigoRDD" name="CodigoRDD"  class="formulario ReparacionesDependientes form-control" placeholder="Codigo Dependiente">
+          </div>
+          <div class="form-group">
+            <input type="text" id="tipoRDD" name="TipoRDD"  class="formulario ReparacionesDependientes form-control" placeholder="Tipo Dependiente">
+          </div>
+          <div class="form-group">
+            <button type="submit" id ="guardar" class="btn btn-success btn-block text-white">Guardar</button>
+          </div>
+        </form>
+        <form action="/listar/" method="POST">{% csrf_token %}
+          <div hidden class="form-group">
+            <input type="text" id="tabla" name="data" class="formulario Aeropuerto form-control" maxlength="100" >
+          </div>
+          <div class="form-group">
+              <button type="submit" id ="listado" class="btn btn-success btn-block text-white">Mostrar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
 {% endblock %}

@@ -5,8 +5,7 @@ class Aeropuerto(models.Model):
     Pos_Geo = models.CharField(verbose_name="Posicion Geografica",max_length=50,null=False)
 
     def __str__(self):
-        texto = "{0}"
-        return texto.format(self.id)
+        return self.Nom_A
     def __iter__(self):
         for field_name in self._meta.fields:
             value=getattr(self,field_name.attname,None)
