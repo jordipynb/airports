@@ -8,7 +8,7 @@
         <h2>Edición de Aeropuertos</h2>
         <div class="card">
             <div class="card-body">
-                <form id="form" action="/editarAeropuerto/" method="POST">{% csrf_token %}
+                <form id="form" action="/editar/" method="POST">{% csrf_token %}
                     <div hidden class="form-group">
                         <input type="text" id="data" value="{{tabla}}"name="tabla" class="formulario Aeropuerto form-control" placeholder="Direccion"
                             maxlength="100" >
