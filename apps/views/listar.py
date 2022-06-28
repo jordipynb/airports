@@ -1,5 +1,6 @@
 from django.shortcuts import redirect, render
 from django.contrib import messages
+from accounts.models import Usuario
 
 from model.models.Aeropuerto import Aeropuerto
 from model.models.Cliente import Cliente
@@ -54,6 +55,9 @@ def para_listar(request):
     elif data == "ReparacionesDependientes":
         listado = ReparacionesDependientes.objects.all()
         name = "Reparaciones Dependientes"
+    elif data == "Admin_de_Instalacion":
+        listado = Usuario.objects.all()
+        name = "Administradores de Instalaciones"
     #messages.success(request, 'Listados!')
     campos=[]
     for a in listado:
