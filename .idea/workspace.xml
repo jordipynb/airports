@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="226b75ce-8539-413e-b76c-19a89d85ba1c" name="Default Changelist" comment="Last commit no commit mas ni commit">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accounts/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/models.py" afterDir="false" />
+    <list default="true" id="226b75ce-8539-413e-b76c-19a89d85ba1c" name="Default Changelist" comment="Updates">
       <change beforePath="$PROJECT_DIR$/aeropuertos.db" beforeDir="false" afterPath="$PROJECT_DIR$/aeropuertos.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/templates/gestion.html" beforeDir="false" afterPath="$PROJECT_DIR$/apps/templates/gestion.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/views/home.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/views/home.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -130,7 +126,7 @@
       <workItem from="1656367108395" duration="25461000" />
       <workItem from="1656415266615" duration="5637000" />
       <workItem from="1656422442613" duration="982000" />
-      <workItem from="1656426486119" duration="3958000" />
+      <workItem from="1656426486119" duration="4267000" />
     </task>
     <task id="LOCAL-00001" summary="Last commit no commit mas ni commit">
       <created>1656429923076</created>
@@ -139,7 +135,14 @@
       <option name="project" value="LOCAL" />
       <updated>1656429923076</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Updates">
+      <created>1656431193587</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1656431193587</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -190,7 +193,8 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Last commit no commit mas ni commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="Last commit no commit mas ni commit" />
+    <MESSAGE value="Updates" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updates" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Aeropuertos$Test__authn.coverage" NAME="Test: authn Coverage Results" MODIFIED="1656400086839" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
