@@ -61,7 +61,6 @@
         <div class="form-group">
             <button id="aceptar" class="btn btn-success btn-block text-white">Aceptar</button>
         </div>
-        {% if user.role != "AI" %}
         <form action="/registrar/" method="POST">{% csrf_token %}
             <div class="form-group">
                 <input type="text" id="nombre" name="nombre" class="formulario Aeropuerto form-control" placeholder="Nombre" maxlength="50">
@@ -237,7 +236,6 @@
                 <button type="submit" id ="guardar" class="btn btn-success btn-block text-white">Guardar</button>
             </div>
         </form>
-        {% endif %}
         <form action="/listar" method="GET">
           <div hidden class="form-group">
             <input type="text" id="tabla" name="data" class="formulario Aeropuerto form-control" maxlength="100" >
