@@ -3,7 +3,6 @@ from django.contrib import messages
 
 from model.models.Aeropuerto import Aeropuerto
 from model.models.Cliente import Cliente
-from model.models.Plazas import Plazas
 from model.models.Nave import Nave
 from model.models.Vuelo import Vuelo
 from model.models.Arribo import Arribo
@@ -13,10 +12,7 @@ from model.models.Valoracion import Valoracion
 from model.models.Reparacion import Reparacion
 from model.models.ReparaNave import ReparaNave
 from model.models.ReparacionesDependientes import ReparacionesDependientes
-
 from accounts.models import Usuario
-    
-
 
 def listar(request):
     dict=para_listar(request)
@@ -31,8 +27,6 @@ def para_listar(request):
         listado = Cliente.objects.all()
     elif data == "Nave":
         listado = Nave.objects.all()
-    elif data == "Plazas":
-        listado = Plazas.objects.all()
     elif data == "Vuelo":
         listado = Vuelo.objects.all()
     elif data == "Arribo":
@@ -72,9 +66,6 @@ def registrar(request):
     capacidad = request.POST['Capacidad']
     no_Trip = request.POST['No_Trip']
     id_D = request.POST['Id_D']
-    clasificP = request.POST['ClasificP']
-    capacidadP = request.POST['CapacidadP']
-    no_TripP = request.POST['No_TripP']
     total_P = request.POST['Total_P']
     no_MatV = request.POST['No_MatV']
     fecha_inV = request.POST['Fecha_inV']
@@ -124,12 +115,8 @@ def registrar(request):
         Nom_C=nom_C,Tipo_C=tipo_C,Nacionalidad=nacionalidad)
     elif data == "Nave":
         cliente = Cliente.objects.get(id=id_D)
-        plazas = Plazas.objects.get(Clasific=clasific, No_Trip=no_Trip, Capacidad=capacidad)
         nave = Nave.objects.create(
-        No_Mat=no_Mat,Clasific=clasific,Capacidad=capacidad,No_Trip=no_Trip,Id_D=cliente,Id_Plazas=plazas)
-    elif data == "Plazas":
-        plazas = Plazas.objects.create(
-        Clasific=clasificP,No_Trip=no_TripP,Capacidad=capacidadP,Total_P=total_P)
+        No_Mat=no_Mat,Clasific=clasific,Capacidad=capacidad,No_Trip=no_Trip,Total_P=total_P,Id_D=cliente)
     elif data == "Vuelo":
         nave = Nave.objects.get(No_Mat=no_MatV)
         aeropuerto = Aeropuerto.objects.get(id=id_AV)
@@ -189,9 +176,6 @@ def editar(request):
     capacidad = request.POST['Capacidad']
     no_Trip = request.POST['No_Trip']
     id_D = request.POST['Id_D']
-    clasificP = request.POST['ClasificP']
-    capacidadP = request.POST['CapacidadP']
-    no_TripP = request.POST['No_TripP']
     total_P = request.POST['Total_P']
     no_MatV = request.POST['No_MatV']
     fecha_inV = request.POST['Fecha_inV']
@@ -251,18 +235,10 @@ def editar(request):
         nave.Clasific = clasific
         nave.Capacidad = capacidad
         nave.No_Trip = no_Trip
-        plazas = Plazas.objects.get(Clasific=clasific, No_Trip=no_Trip, Capacidad=capacidad)
-        nave.Id_Plazas = plazas
+        nave.Total_P = total_P
         cliente = Cliente.objects.get(id=id_D)
         nave.Id_D=cliente
         nave.save()
-    elif data=="Plazas":
-        plazas = Plazas.objects.get(id=codigo)
-        plazas.Clasific = clasificP
-        plazas.No_Trip = no_TripP
-        plazas.Capacidad = capacidadP
-        plazas.Total_P = total_P
-        plazas.save()
     elif data=="Vuelo":
         vuelo = Vuelo.objects.get(id=codigo)
         nave = Nave.objects.get(No_Mat=no_MatV)
@@ -363,8 +339,6 @@ def edicion(request,codigo,tabla,campos):
         elemento= Cliente.objects.get(id=codigo)
     elif(tabla=="Nave"):
         elemento= Nave.objects.get(id=codigo)
-    elif(tabla=="Plazas"):
-        elemento= Plazas.objects.get(id=codigo)
     elif(tabla=="Vuelo"):
         elemento= Vuelo.objects.get(id=codigo)
     elif(tabla=="Arribo"):
@@ -392,9 +366,6 @@ def eliminar(request,codigo,tabla):
         elemento.delete()
     elif tabla== "Nave":
         elemento = Nave.objects.get(id=codigo)
-        elemento.delete()
-    elif tabla== "Plazas":
-        elemento = Plazas.objects.get(id=codigo)
         elemento.delete()
     elif tabla== "Vuelo":
         elemento = Vuelo.objects.get(id=codigo)
