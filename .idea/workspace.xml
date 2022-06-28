@@ -2,20 +2,48 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="226b75ce-8539-413e-b76c-19a89d85ba1c" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/e8d476c6-881f-4340-a09c-324065f57fdb.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/accounts/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/migrations/0001_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/accounts/migrations/0002_alter_usuario_role.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/accounts/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/accounts/static/css/login.css" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/static/css/login.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/accounts/static/js/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/static/js/login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/accounts/templates/register.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/accounts/templates/registration/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/templates/registration/base.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/accounts/templates/registration/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/templates/registration/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/accounts/templates/registration/register.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/aeropuertos.db" beforeDir="false" afterPath="$PROJECT_DIR$/aeropuertos.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aeropuertos_web/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/aeropuertos_web/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aeropuertos_web/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/aeropuertos_web/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/static/css/gestionAeropuerto.css" beforeDir="false" afterPath="$PROJECT_DIR$/apps/static/css/gestionAeropuerto.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/templates/edicion.html" beforeDir="false" afterPath="$PROJECT_DIR$/apps/templates/edicion.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/templates/gestion.html" beforeDir="false" afterPath="$PROJECT_DIR$/apps/templates/gestion.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/apps/templates/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/templates/listados.html" beforeDir="false" afterPath="$PROJECT_DIR$/apps/templates/listados.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/templates/register.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/views/home.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/views/home.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/authn/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/authn/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/authn/static/css/login.css" beforeDir="false" afterPath="$PROJECT_DIR$/authn/static/css/login.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/authn/templates/base.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/authn/templates/login.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/authn/templates/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/authn/templates/register.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/authn/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/authn/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/model/migrations/0001_initial.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+        <option value="HTML File" />
+        <option value="JavaScript File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -39,17 +67,43 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/accounts/static/css" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/authn/templates" />
+    <property name="restartRequiresConfirmation" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/authn/templates" />
       <recent name="$PROJECT_DIR$/accounts/static/css" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/accounts" />
     </key>
   </component>
   <component name="RunManager" selected="Django Server.Aeropuertos">
+    <configuration name="Test: authn" type="DjangoTestsConfigurationType" temporary="true">
+      <module name="Aeropuertos" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="TARGET" value="authn" />
+      <option name="SETTINGS_FILE" value="" />
+      <option name="CUSTOM_SETTINGS" value="false" />
+      <option name="USE_OPTIONS" value="false" />
+      <option name="OPTIONS" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="127.0.0.1:8000" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://127.0.0.1:8000/">
       <method v="2" />
     </configuration>
@@ -80,6 +134,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="JavaScript Debug.127.0.0.1:8000" />
+        <item itemvalue="Django tests.Test: authn" />
       </list>
     </recent_temporary>
   </component>
@@ -95,7 +150,10 @@
       <workItem from="1656285644786" duration="63000" />
       <workItem from="1656285805725" duration="13234000" />
       <workItem from="1656344150428" duration="169000" />
-      <workItem from="1656367108395" duration="8204000" />
+      <workItem from="1656367108395" duration="25461000" />
+      <workItem from="1656415266615" duration="5637000" />
+      <workItem from="1656422442613" duration="982000" />
+      <workItem from="1656426486119" duration="2808000" />
     </task>
     <servers />
   </component>
@@ -146,5 +204,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Aeropuertos$Test__authn.coverage" NAME="Test: authn Coverage Results" MODIFIED="1656400086839" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>
 </project>

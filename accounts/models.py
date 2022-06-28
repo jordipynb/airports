@@ -1,8 +1,12 @@
 from django.db import models
 from django.contrib.auth.models import BaseUserManager, AbstractBaseUser
 from django.contrib.auth.models import PermissionsMixin
+# from django.contrib.auth.forms import UserCreationForm
+# from django import forms
+from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
 
-# Create your models here.
+# User = get_user_model()
 
 
 class UserManager(BaseUserManager):
@@ -36,6 +40,7 @@ class Usuario(AbstractBaseUser, PermissionsMixin):
         blank=False,
     )
     ROLE = (
+        ("US", "Usuario Comun"),
         ("AI", "Administrador Instalaciones"),
         ("AA", "Administrador Aeropuertos"),
         ("AG", "Administrador General"),
@@ -80,9 +85,13 @@ class Usuario(AbstractBaseUser, PermissionsMixin):
             if data == "Vuelo" or data == "Arribo" or data == "Instalacion" or data == "Admin_de_Instalacion":
                 return True
         return False
-    
+
+    class Meta:
+        # User = get_user_model()
+        app_label = 'accounts'
+
     def __str__(self):
-            return self.email
+        return self.email
 
     def has_perm(self, perm, obj=None):
         "Does the user have a specific permission?"
@@ -115,3 +124,4 @@ class Usuario(AbstractBaseUser, PermissionsMixin):
     @property
     def is_staff(self):
         return self.role == "AG"
+

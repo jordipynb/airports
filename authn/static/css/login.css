@@ -285,3 +285,7 @@ body .article h1 {
   color: #000;
   font-size: 20px;
 }
+.span1{
+  font-size: 5rem;
+  border: 7px solid rgba(0, 50, 255, 0.5);
+}

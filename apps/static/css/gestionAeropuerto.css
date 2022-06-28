@@ -4,6 +4,18 @@
 /*  vertical-align: middle;*/
 /*}*/
 
+body {
+  font-size: 62.5%;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  font-family: Raleway;
+  background: url("airport.jpg") no-repeat fixed;
+  background-size: cover;
+  background-position: 50%;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+}
 .glow{
         color: #fff;
         text-shadow: #fff 0 0 10px;}
@@ -20,7 +32,6 @@
   backface-visibility: hidden;
   perspective: 1000px;
 }
-
 @keyframes shake {
   10%, 90% {
     transform: translate3d(-1px, 0, 0);
@@ -35,10 +46,14 @@
     transform: translate3d(4px, 0, 0);
   }
 }
-
-span{
-  font-size: 3rem;
+.span1{
+  font-size: 20px;
+  font-weight: bold;
+}
+.span2{
+  font-size: 2rem;
   border: 7px solid rgba(0, 50, 255, 0.5);
+  sfont-weight: bold;
 }
 .times{
   font-family: 'Times New Roman', sans-serif;

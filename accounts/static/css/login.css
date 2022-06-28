@@ -1,21 +1,14 @@
-/*.glow{*/
-/*    color: #fff;*/
-/*    text-shadow: #fff 0 0 10px;*/
-/*}*/
-
-/*label{*/
-/*    font-size: 20px;*/
-/*}*/
-/*input{*/
-/*    padding: 10px 15px;*/
-/*}*/
+.span1{
+  font-size: 5rem;
+  border: 7px solid rgba(0, 50, 255, 0.5);
+}
 body {
   font-size: 62.5%;
   width: 100%;
   height: 100%;
   position: absolute;
   font-family: Raleway;
-  background: url(https://newevolutiondesigns.com/images/freebies/city-wallpaper-18.jpg) no-repeat fixed;
+  background: url("airport.jpg") no-repeat fixed;
   background-size: cover;
   background-position: 50%;
   -webkit-font-smoothing: antialiased;
@@ -27,7 +20,7 @@ body .menu {
   background: inherit;
 }
 body .menu .mainmenu {
-  background: url(https://newevolutiondesigns.com/images/freebies/city-wallpaper-18.jpg) no-repeat fixed;
+  background: url("airport.jpg") no-repeat fixed;
   background-size: cover;
   background-position: 50%;
 }
@@ -116,14 +109,14 @@ body .article h1 {
 .form {
   margin: 0 auto;
   position: fixed;
-  top: 35%;
+  top: 20%;
   left: 50%;
   -moz-transform: translate3d(-50%, 0, 0);
   -ms-transform: translate3d(-50%, 0, 0);
   -webkit-transform: translate3d(-50%, 0, 0);
   transform: translate3d(-50%, 0, 0);
   width: 350px;
-  padding: 20px;
+  padding: 5px;
   overflow: hidden;
   background-color: black;
   border: 1px solid rgba(255, 255, 255, 0.5);
@@ -199,7 +192,7 @@ body .article h1 {
   border-left: 1px solid rgba(255, 255, 255, 0.4);
   border-bottom: 1px solid rgba(255, 255, 255, 0.4);
   border-right: 1px solid rgba(255, 255, 255, 0.4);
-  margin-bottom: 25px;
+  margin-bottom: 20px;
   color: rgba(255, 255, 255, 0.4);
   padding: 10px 20px;
 }
@@ -286,4 +279,13 @@ body .article h1 {
 }
 .topbar.success .input::-webkit-input-placeholder {
   color: white;
+}
+
+.glow{
+    color: #fff;
+    text-shadow: #fff 0 0 10px;
+}
+.tag{
+  color: #000;
+  font-size: 20px;
 }
