@@ -1,5 +1,6 @@
 from django.shortcuts import redirect
 from django.contrib import messages
+from django.contrib.auth import get_user
 
 from model.models.Aeropuerto import Aeropuerto
 from model.models.Cliente import Cliente
@@ -39,7 +40,6 @@ def registrar(request):
     nom_I = request.POST['Nom_I']
     tipo_I = request.POST['Tipo_I']
     ubicacion = request.POST['Ubicacion']
-    id_AI = request.POST['Id_AI']
     id_IS = request.POST['Id_IS']
     codigoS = request.POST['CodigoS']
     precio = request.POST['Precio']
@@ -89,7 +89,9 @@ def registrar(request):
         arribo = Arribo.objects.create(
         Id_V=vuelo,No_Mat=no_MatA,Fecha_in=fecha_inA,Id_C=cliente,Caracter=caracter)
     elif data == "Instalacion":
-        aeropuerto = Aeropuerto.objects.get(id=id_AI)
+        user = get_user(request)
+        id_role = user.id_role
+        aeropuerto = Aeropuerto.objects.get(id=id_role)
         instalacion = Instalacion.objects.create(
         Nom_I=nom_I,Tipo_I=tipo_I,Ubicacion=ubicacion,Id_A=aeropuerto)
     elif data == "Servicio":

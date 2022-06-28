@@ -6,7 +6,7 @@ from django.contrib.auth.models import PermissionsMixin
 
 
 class UserManager(BaseUserManager):
-    def create_user(self, email, password, role):
+    def create_user(self, email, password, role, id_role):
         if not email:
             raise ValueError("Users must have an email address")
         if not password:
@@ -14,13 +14,14 @@ class UserManager(BaseUserManager):
         user = self.model(
             email=self.normalize_email(email),
             role=role,
+            id_role=id_role,
         )
         user.set_password(password)
         user.save(using=self._db)
         return user
 
     def create_superuser(self, email, password):
-        user = self.create_user(email, password, role="AG")
+        user = self.create_user(email=email, password=password, role="AG", id_role=0)
         user.is_admin = True
         user.save(using=self._db)
         return user
@@ -37,10 +38,10 @@ class Usuario(AbstractBaseUser, PermissionsMixin):
     ROLE = (
         ("AI", "Administrador Instalaciones"),
         ("AA", "Administrador Aeropuertos"),
-        ("AR", "Administrador Reparaciones"),
         ("AG", "Administrador General"),
     )
     role = models.CharField(max_length=2, choices=ROLE, default="US", null=False)
+    id_role = models.IntegerField(null=False, default=0)
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
 

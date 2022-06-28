@@ -40,7 +40,6 @@ def editar(request):
     nom_I = request.POST['Nom_I']
     tipo_I = request.POST['Tipo_I']
     ubicacion = request.POST['Ubicacion']
-    id_AI = request.POST['Id_AI']
     id_IS = request.POST['Id_IS']
     codigoS = request.POST['CodigoS']
     precio = request.POST['Precio']
@@ -113,8 +112,6 @@ def editar(request):
         arribo.save()
     elif data=="Instalacion":
         instalacion = Instalacion.objects.get(id=codigo)
-        aeropuerto = Aeropuerto.objects.get(id=id_AI)
-        instalacion.Id_A = aeropuerto
         instalacion.Nom_I = nom_I
         instalacion.Tipo_I = tipo_I
         instalacion.Ubicacion = ubicacion

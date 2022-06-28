@@ -40,13 +40,13 @@ class UserChangeForm(forms.ModelForm):
 
     class Meta:
         model = Usuario
-        fields = ("email", "password", "role", "is_active", "is_admin")
+        fields = ("email", "password", "role", "id_role", "is_active", "is_admin")
 
 
 class UserAdmin(BaseUserAdmin):
     form = UserChangeForm
     add_form = UserCreationForm
-    list_display = ("email", "is_admin", "role")
+    list_display = ("email", "is_admin", "role", "id_role")
     list_filter = ("role",)
     fieldsets = (
         (
@@ -58,7 +58,7 @@ class UserAdmin(BaseUserAdmin):
                 )
             },
         ),
-        ("Personal info", {"fields": ("role",)}),
+        ("Personal info", {"fields": ("role","id_role")}),
         ("Permissions", {"fields": ("is_admin",)}),
     )
     add_fieldsets = (
@@ -71,6 +71,7 @@ class UserAdmin(BaseUserAdmin):
                     "password1",
                     "password2",
                     "role",
+                    "id_role",
                 ),
             },
         ),
