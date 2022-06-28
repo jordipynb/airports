@@ -99,7 +99,9 @@ def registrar(request):
         instalacion = Instalacion.objects.create(
         Nom_I=nom_I,Tipo_I=tipo_I,Ubicacion=ubicacion,Id_A=aeropuerto)
     elif data == "Servicio":
-        instalacion = Instalacion.objects.get(id=id_IS)
+        user = get_user(request)
+        id_role = user.id_role
+        instalacion = Instalacion.objects.get(id=id_role)
         servicio = Servicio.objects.create(
         Id_I=instalacion,Codigo=codigoS,Precio=precio,Descripcion=descripcion)
     elif data == "Valoracion":
@@ -110,16 +112,20 @@ def registrar(request):
         valoracion = Valoracion.objects.create(
         Id_S=servicio,Id_Ar=arribo,Id_I=id_IV,Codigo=codigoV,No_Mat=no_MatVal,Fecha_in=fecha_inVal,Id_C=id_CV,Valoracion=valoracionV)
     elif data == "Reparacion":
-        instalacion = Instalacion.objects.get(id=id_IR)
+        user = get_user(request)
+        id_role = user.id_role
+        instalacion = Instalacion.objects.get(id=id_role)
         servicio = Servicio.objects.get(Id_I=instalacion,Codigo=codigoR)
         reparacion = Reparacion.objects.create(
         Id_S=servicio,Id_I=id_IR,Codigo=codigoR,Tipo=tipoR)
     elif data == "ReparaNave":
-        reparacion = Reparacion.objects.get(Id_I=id_IRN,Codigo=codigoRN,Tipo=tipoRN)
+        user = get_user(request)
+        instalacion = Instalacion.objects.get(id=id_role)
+        reparacion = Reparacion.objects.get(Id_I=instalacion,Codigo=codigoRN,Tipo=tipoRN)
         nave = Nave.objects.get(No_Mat=no_MatRN)
         vuelo = Vuelo.objects.get(No_Mat=nave,Fecha_in=fecha_inRN)
         reparanave = ReparaNave.objects.create(
-        Id_Rep=reparacion,Id_V=vuelo,Id_I=id_IRN,Codigo=codigoRN,Tipo=tipoRN,No_Mat=no_MatRN,Fecha_in=fecha_inRN,Fecha_Ini=fecha_Ini,Tiempo_P=tiempo_P,Fecha_Fin=fecha_Fin)
+        Id_Rep=reparacion,Id_V=vuelo,Id_I=instalacion,Codigo=codigoRN,Tipo=tipoRN,No_Mat=no_MatRN,Fecha_in=fecha_inRN,Fecha_Ini=fecha_Ini,Tiempo_P=tiempo_P,Fecha_Fin=fecha_Fin)
     elif data == "ReparacionesDependientes":
         reparacion1 = Reparacion.objects.get(Id_I=id_IRD,Codigo=codigoRD,Tipo=tipoRD)
         reparacion2 = Reparacion.objects.get(Id_I=id_IRDD,Codigo=codigoRDD,Tipo=tipoRDD)
