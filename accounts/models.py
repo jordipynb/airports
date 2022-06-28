@@ -43,7 +43,7 @@ class Usuario(AbstractBaseUser, PermissionsMixin):
         ("AG", "Administrador General"),
     )
     role = models.CharField(max_length=2, choices=ROLE, default="US", null=False)
-    id_role = models.IntegerField(null=False, default=0,verbose_name="email address")
+    id_role = models.IntegerField(null=False, default=0, verbose_name="id")
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
 

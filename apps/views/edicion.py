@@ -16,6 +16,7 @@ from model.models.Aeropuerto import Aeropuerto
 
 def edicion(request,codigo,tabla,campos):
     email=[]
+    aeropuertos = []
     if(tabla=="Aeropuerto"):
         elemento = Aeropuerto.objects.get(id=codigo)
     elif(tabla=="Cliente"):
