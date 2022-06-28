@@ -52,20 +52,32 @@ class Usuario(AbstractBaseUser, PermissionsMixin):
         if self.role == 'AI':
             if data == 'Instalaciones' or data == "Reparaciones":
                 return True
+        elif self.role == 'AA':
+            if data == 'Cliente' or data == "Nave" or data == "Vuelo" or data == "Arribo" or data == "Instalacion" or data == "Admin_de_Instalacion":
+                return True
         return False
     def can_edit(self, data):
         if self.role == 'AI':
             if data == "Reparaciones":
+                return True
+        elif self.role == 'AA':
+            if data == "Vuelo" or data == "Arribo" or data == "Instalacion" or data == "Admin_de_Instalacion":
                 return True
         return False
     def can_delete(self, data):
         if self.role == 'AI':
             if data == "Reparaciones":
                 return True
+        elif self.role == 'AA':
+            if data == "Vuelo" or data == "Arribo" or data == "Instalacion" or data == "Admin_de_Instalacion":
+                return True
         return False
     def can_create(self, data):
         if self.role == 'AI':
             if data == "Reparaciones":
+                return True
+        elif self.role == 'AA':
+            if data == "Vuelo" or data == "Arribo" or data == "Instalacion" or data == "Admin_de_Instalacion":
                 return True
         return False
     

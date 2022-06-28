@@ -30,7 +30,6 @@ def editar(request):
     total_P = request.POST['Total_P']
     no_MatV = request.POST['No_MatV']
     fecha_inV = request.POST['Fecha_inV']
-    id_AV = request.POST['Id_AV']
     fecha_outV = request.POST['Fecha_outV']
     estadoNave = request.POST['EstadoNave']
     no_MatA = request.POST['No_MatA']
@@ -92,10 +91,8 @@ def editar(request):
     elif data=="Vuelo":
         vuelo = Vuelo.objects.get(id=codigo)
         nave = Nave.objects.get(No_Mat=no_MatV)
-        aeropuerto = Aeropuerto.objects.get(id=id_AV)
         vuelo.No_Mat = nave
         vuelo.Fecha_in = fecha_inV
-        vuelo.Id_A = aeropuerto
         vuelo.Fecha_out = fecha_outV
         vuelo.EstadoNave = estadoNave
         vuelo.save()

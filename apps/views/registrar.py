@@ -30,7 +30,6 @@ def registrar(request):
     total_P = request.POST['Total_P']
     no_MatV = request.POST['No_MatV']
     fecha_inV = request.POST['Fecha_inV']
-    id_AV = request.POST['Id_AV']
     fecha_outV = request.POST['Fecha_outV']
     estadoNave = request.POST['EstadoNave']
     no_MatA = request.POST['No_MatA']
@@ -79,7 +78,9 @@ def registrar(request):
         No_Mat=no_Mat,Clasific=clasific,Capacidad=capacidad,No_Trip=no_Trip,Total_P=total_P,Id_D=cliente)
     elif data == "Vuelo":
         nave = Nave.objects.get(No_Mat=no_MatV)
-        aeropuerto = Aeropuerto.objects.get(id=id_AV)
+        user = get_user(request)
+        id_role = user.id_role
+        aeropuerto = Aeropuerto.objects.get(id=id_role)
         vuelo = Vuelo.objects.create(
         No_Mat=nave,Fecha_in=fecha_inV,Id_A=aeropuerto,Fecha_out=fecha_outV,EstadoNave=estadoNave)
     elif data == "Arribo":

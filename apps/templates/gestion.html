@@ -20,10 +20,10 @@
            {% if user.role == "AG" %}
            <option value="Aeropuerto" selected>Aeropuerto</option>
            {% endif %}
-           {% if user.role == "AG" %}
+           {% if user.role == "AG" or user.role == "AA" %}
            <option value="Cliente">Cliente</option>
            {% endif %}
-           {% if user.role == "AG" %}
+           {% if user.role == "AG" or user.role == "AA" %}
            <option value="Nave">Nave</option>
            {% endif %}
            {% if user.role == "AG" %}
@@ -37,9 +37,6 @@
            {% endif %}
            {% if user.role == "AA" or user.role == "AI" %}
            <option value="Instalacion">Instalacion</option>
-           {% endif %}
-           {% if user.role == "AA" %}
-           <option value="Cliente">Cliente</option>
            {% endif %}
            {% if user.role == "AA" %}
            <option value="Admin_de_Instalacion">Administrador de Instalacion</option>
@@ -113,9 +110,6 @@
             </div>
             <div class="form-group">
                 <input type="datetime-local" id="fecha_inV" name="Fecha_inV"  class="formulario Vuelo form-control">
-            </div>
-            <div class="form-group">
-                <input type="text" id="id_AV" name="Id_AV"  class="formulario Vuelo form-control" placeholder="Aeropuerto">
             </div>
             <div class="form-group">
                 <input type="datetime-local" id="fecha_outV" name="Fecha_outV"  class="formulario Vuelo form-control">
