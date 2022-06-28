@@ -1,6 +1,7 @@
 from django.shortcuts import redirect
 from django.contrib import messages
 from django.contrib.auth import get_user
+from accounts.models import Usuario
 
 from model.models.Aeropuerto import Aeropuerto
 from model.models.Cliente import Cliente
@@ -66,6 +67,8 @@ def registrar(request):
     id_IRDD = request.POST['Id_IRDD']
     codigoRDD = request.POST['CodigoRDD']
     tipoRDD = request.POST['TipoRDD']
+    emailAI = request.POST['EmailAI']
+    id_IAI = request.POST['Id_IAI']
     if data == "Aeropuerto":
         aeropuerto = Aeropuerto.objects.create(
         Nom_A=nombre,Direccion=direccion,Pos_Geo=pos_Geo)
@@ -122,6 +125,11 @@ def registrar(request):
         reparacion2 = Reparacion.objects.get(Id_I=id_IRDD,Codigo=codigoRDD,Tipo=tipoRDD)
         reparacionesDependientes = ReparacionesDependientes.objects.create(
         Id_Rep=reparacion1,Id_RepDep=reparacion2,Id_I=id_IRD,Codigo=codigoRD,Tipo=tipoRD,Id_IDep=id_IRDD,Codigo_Dep=codigoRDD,Tipo_Dep=tipoRDD)
+    elif data == "Admin_de_Instalacion":
+        usuario = Usuario.objects.get(email=emailAI)
+        instalacion = Instalacion.objects.get(id=id_IAI)
+        usuario.id_role = id_IAI
+        usuario.save()
     messages.success(request, 'Registrado!')
     return redirect('/')
 
