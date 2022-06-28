@@ -50,7 +50,7 @@ class Usuario(AbstractBaseUser, PermissionsMixin):
     USERNAME_FIELD = "email"
     def can_see(self, data):
         if self.role == 'AI':
-            if data == 'Instalaciones' or data == "Reparaciones":
+            if data == "Servicio" or data == "Reparacion" or data == "Valoracion" or data == "ReparaNave" or data == "ReparacionesDependientes":
                 return True
         elif self.role == 'AA':
             if data == 'Cliente' or data == "Nave" or data == "Vuelo" or data == "Arribo" or data == "Instalacion" or data == "Admin_de_Instalacion":
@@ -58,7 +58,7 @@ class Usuario(AbstractBaseUser, PermissionsMixin):
         return False
     def can_edit(self, data):
         if self.role == 'AI':
-            if data == "Reparaciones":
+            if data == "Servicio" or data == "Reparacion" or data == "Valoracion" or data == "ReparaNave" or data == "ReparacionesDependientes":
                 return True
         elif self.role == 'AA':
             if data == "Vuelo" or data == "Arribo" or data == "Instalacion" or data == "Admin_de_Instalacion":
@@ -66,7 +66,7 @@ class Usuario(AbstractBaseUser, PermissionsMixin):
         return False
     def can_delete(self, data):
         if self.role == 'AI':
-            if data == "Reparaciones":
+            if data == "Servicio" or data == "Reparacion" or data == "Valoracion" or data == "ReparaNave" or data == "ReparacionesDependientes":
                 return True
         elif self.role == 'AA':
             if data == "Vuelo" or data == "Arribo" or data == "Instalacion" or data == "Admin_de_Instalacion":
@@ -74,7 +74,7 @@ class Usuario(AbstractBaseUser, PermissionsMixin):
         return False
     def can_create(self, data):
         if self.role == 'AI':
-            if data == "Reparaciones":
+            if data == "Servicio" or data == "Reparacion" or data == "Valoracion" or data == "ReparaNave" or data == "ReparacionesDependientes":
                 return True
         elif self.role == 'AA':
             if data == "Vuelo" or data == "Arribo" or data == "Instalacion" or data == "Admin_de_Instalacion":
@@ -87,7 +87,6 @@ class Usuario(AbstractBaseUser, PermissionsMixin):
     def has_perm(self, perm, obj=None):
         "Does the user have a specific permission?"
         # Simplest possible answer: Yes, always
-        self.USERNAME_FIELD
         return self.is_staff
 
     def has_module_perms(self, app_label):
