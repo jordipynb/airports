@@ -119,6 +119,8 @@ class Usuario(AbstractBaseUser, PermissionsMixin):
             elif name == "id":
                 if self.role== "AA":
                     output.append("Aeropuerto")
+                if self.role== "AI":
+                    output.append("Instalacion")
         return output
 
     @property
