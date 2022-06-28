@@ -8,7 +8,6 @@ def home(request):
     email=[]
     aeropuertos = Aeropuerto.objects.all()
     usuarios= Usuario.objects.all()
-    aeropuertos=Aeropuerto.objects.all()
     user = get_user(request)
     instalaciones=[]
     if user.is_authenticated:

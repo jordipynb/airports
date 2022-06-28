@@ -51,6 +51,9 @@ def eliminar(request,codigo,tabla):
     elif tabla == "Admin_de_Aeropuerto":
         elemento=Usuario.objects.get(id=codigo)
         elemento.delete()
+    elif tabla == "Admin_de_Instalacion":
+        elemento=Usuario.objects.get(id=codigo)
+        elemento.delete()
     messages.success(request, '¡Eliminado!')
     return redirect('/')
 
