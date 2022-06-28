@@ -12,6 +12,7 @@ from model.models.Valoracion import Valoracion
 from model.models.Reparacion import Reparacion
 from model.models.ReparaNave import ReparaNave
 from model.models.ReparacionesDependientes import ReparacionesDependientes
+from accounts.models import Usuario
 
 def editar(request):
     codigo = request.POST['id']
@@ -30,7 +31,6 @@ def editar(request):
     total_P = request.POST['Total_P']
     no_MatV = request.POST['No_MatV']
     fecha_inV = request.POST['Fecha_inV']
-    id_AV = request.POST['Id_AV']
     fecha_outV = request.POST['Fecha_outV']
     estadoNave = request.POST['EstadoNave']
     no_MatA = request.POST['No_MatA']
@@ -40,7 +40,6 @@ def editar(request):
     nom_I = request.POST['Nom_I']
     tipo_I = request.POST['Tipo_I']
     ubicacion = request.POST['Ubicacion']
-    id_AI = request.POST['Id_AI']
     id_IS = request.POST['Id_IS']
     codigoS = request.POST['CodigoS']
     precio = request.POST['Precio']
@@ -68,6 +67,7 @@ def editar(request):
     id_IRDD = request.POST['Id_IRDD']
     codigoRDD = request.POST['CodigoRDD']
     tipoRDD = request.POST['TipoRDD']
+    admin_de_Aeropuerto_Id_A = request.POST['Admin_de_Aeropuerto_Id_A']
     if data=="Aeropuerto":
         aeropuerto = Aeropuerto.objects.get(id=codigo)
         aeropuerto.Nom_A = nombre
@@ -93,10 +93,8 @@ def editar(request):
     elif data=="Vuelo":
         vuelo = Vuelo.objects.get(id=codigo)
         nave = Nave.objects.get(No_Mat=no_MatV)
-        aeropuerto = Aeropuerto.objects.get(id=id_AV)
         vuelo.No_Mat = nave
         vuelo.Fecha_in = fecha_inV
-        vuelo.Id_A = aeropuerto
         vuelo.Fecha_out = fecha_outV
         vuelo.EstadoNave = estadoNave
         vuelo.save()
@@ -113,8 +111,6 @@ def editar(request):
         arribo.save()
     elif data=="Instalacion":
         instalacion = Instalacion.objects.get(id=codigo)
-        aeropuerto = Aeropuerto.objects.get(id=id_AI)
-        instalacion.Id_A = aeropuerto
         instalacion.Nom_I = nom_I
         instalacion.Tipo_I = tipo_I
         instalacion.Ubicacion = ubicacion
@@ -180,6 +176,10 @@ def editar(request):
         reparacionesDependientes.Codigo_Dep = codigoRDD
         reparacionesDependientes.Tipo_Dep = tipoRDD 
         reparacionesDependientes.save()
+    elif data=="Admin_de_Aeropuerto":
+        admin_de_aeropuerto=Usuario.objects.get(id=codigo)
+        admin_de_aeropuerto.id_role=admin_de_Aeropuerto_Id_A
+        admin_de_aeropuerto.save()
     messages.success(request, 'Actualizado!')
     return redirect('/')
 

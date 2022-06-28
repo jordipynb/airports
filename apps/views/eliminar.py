@@ -12,6 +12,7 @@ from model.models.Valoracion import Valoracion
 from model.models.Reparacion import Reparacion
 from model.models.ReparaNave import ReparaNave
 from model.models.ReparacionesDependientes import ReparacionesDependientes
+from accounts.models import Usuario
 
 def eliminar(request,codigo,tabla):
     if tabla== "Aeropuerto":
@@ -46,6 +47,12 @@ def eliminar(request,codigo,tabla):
         elemento.delete()
     elif tabla== "ReparacionesDependientes":
         elemento= ReparacionesDependientes.objects.get(id=codigo)
+        elemento.delete()
+    elif tabla == "Admin_de_Aeropuerto":
+        elemento=Usuario.objects.get(id=codigo)
+        elemento.delete()
+    elif tabla == "Admin_de_Instalacion":
+        elemento=Usuario.objects.get(id=codigo)
         elemento.delete()
     messages.success(request, '¡Eliminado!')
     return redirect('/')

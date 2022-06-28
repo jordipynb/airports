@@ -7,33 +7,44 @@
       <input type="text" id="data" name="data" value ="Aeropuerto" class="form-control" placeholder="Nombre"
           maxlength="50" >
   </div>
-  <div class="times col-sm-12 col-md-6 col-lg-8 col-xl-8">
-    <h1>Listado</h1>
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            {% for a in campos %}
-              <th>{{a}}</th> 
+  <div class="col-sm-12 col-md-6 col-lg-8 col-xl-8">
+      {% if campos %}
+      <h1>Listado de {{name}}</h1>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              {% for a in campos %}
+                <th>{{a}}</th> 
+              {% endfor %}
+              {%if tabla != "consulta"%}
+              <th colspan="2">Opciones</th>
+              {% endif %}
+            </tr>
+          </thead>
+          <tbody>
+            {% for a in aeropuertos %}
+            <tr>
+              {% for c in a %}
+                  <td>{{c}}</td>
+              {% endfor %}
+              {%if tabla != "consulta"%}
+              <td><a href="edicion/{{a.id}}/{{tabla}}/{{campos}}" id ="editar" class="btn btn-info">Editar</a></td>
+              <td><a href="eliminar/{{a.id}}/{{tabla}}" class="btn btn-danger btnEliminacion">Eliminar</a></td>
+              {% endif %}
+            </tr>
             {% endfor %}
-            {%if tabla != "consulta"%}
-            <th colspan="2">Opciones</th>
-            {% endif %}
-          </tr>
-        </thead>
-        <tbody>
-          {% for a in aeropuertos %}
-          <tr>
-            {% for c in a %}
-                <td>{{c}}</td>
-            {% endfor %}
-            {%if tabla != "consulta"%}
-            <td><a href="edicion/{{a.id}}/{{tabla}}/{{campos}}" id ="editar" class="btn btn-info">Editar</a></td>
-            <td><a href="eliminar/{{a.id}}/{{tabla}}" class="btn btn-danger btnEliminacion">Eliminar</a></td>
-            {% endif %}
-          </tr>
-          {% endfor %}
-        </tbody>
-      </table>
+          </tbody>
+        </table>
+        <a class="btn btn-dark" href="/">Volver al inicio</a>
+      {% else %}
+
+        {% if name %}
+        <h3 class="h3 mt-4">No existen {{name}} aun</h3>
+        {% else %}
+        <h3 class="h3 mt-4">El recurso solicitado no existe</h3>
+        {% endif %}
+        <a class="btn btn-dark mt-3" href="/">Volver al inicio</a>
+      {% endif %}
     </div>
   </div>
 {% endblock %}

@@ -1,5 +1,7 @@
 from django.shortcuts import redirect
 from django.contrib import messages
+from django.contrib.auth import get_user
+from accounts.models import Usuario
 
 from model.models.Aeropuerto import Aeropuerto
 from model.models.Cliente import Cliente
@@ -29,7 +31,6 @@ def registrar(request):
     total_P = request.POST['Total_P']
     no_MatV = request.POST['No_MatV']
     fecha_inV = request.POST['Fecha_inV']
-    id_AV = request.POST['Id_AV']
     fecha_outV = request.POST['Fecha_outV']
     estadoNave = request.POST['EstadoNave']
     no_MatA = request.POST['No_MatA']
@@ -39,8 +40,6 @@ def registrar(request):
     nom_I = request.POST['Nom_I']
     tipo_I = request.POST['Tipo_I']
     ubicacion = request.POST['Ubicacion']
-    id_AI = request.POST['Id_AI']
-    id_IS = request.POST['Id_IS']
     codigoS = request.POST['CodigoS']
     precio = request.POST['Precio']
     descripcion = request.POST['Descripcion']
@@ -53,7 +52,6 @@ def registrar(request):
     id_IR = request.POST['Id_IR']
     codigoR = request.POST['CodigoR']
     tipoR = request.POST['TipoR']
-    id_IRN = request.POST['Id_IRN']
     codigoRN = request.POST['CodigoRN']
     tipoRN = request.POST['TipoRN']
     no_MatRN = request.POST['No_MatRN']
@@ -67,6 +65,10 @@ def registrar(request):
     id_IRDD = request.POST['Id_IRDD']
     codigoRDD = request.POST['CodigoRDD']
     tipoRDD = request.POST['TipoRDD']
+    admin_de_Aeropuerto_Id_A = request.POST['Admin_de_Aeropuerto_Id_A']
+    admin_de_Aeropuerto_correo = request.POST['Admin_de_Aeropuerto_correo']
+    emailAI = request.POST['EmailAI']
+    id_IAI = request.POST['Id_IAI']
     if data == "Aeropuerto":
         aeropuerto = Aeropuerto.objects.create(
         Nom_A=nombre,Direccion=direccion,Pos_Geo=pos_Geo)
@@ -79,7 +81,9 @@ def registrar(request):
         No_Mat=no_Mat,Clasific=clasific,Capacidad=capacidad,No_Trip=no_Trip,Total_P=total_P,Id_D=cliente)
     elif data == "Vuelo":
         nave = Nave.objects.get(No_Mat=no_MatV)
-        aeropuerto = Aeropuerto.objects.get(id=id_AV)
+        user = get_user(request)
+        id_role = user.id_role
+        aeropuerto = Aeropuerto.objects.get(id=id_role)
         vuelo = Vuelo.objects.create(
         No_Mat=nave,Fecha_in=fecha_inV,Id_A=aeropuerto,Fecha_out=fecha_outV,EstadoNave=estadoNave)
     elif data == "Arribo":
@@ -89,11 +93,15 @@ def registrar(request):
         arribo = Arribo.objects.create(
         Id_V=vuelo,No_Mat=no_MatA,Fecha_in=fecha_inA,Id_C=cliente,Caracter=caracter)
     elif data == "Instalacion":
-        aeropuerto = Aeropuerto.objects.get(id=id_AI)
+        user = get_user(request)
+        id_role = user.id_role
+        aeropuerto = Aeropuerto.objects.get(id=id_role)
         instalacion = Instalacion.objects.create(
         Nom_I=nom_I,Tipo_I=tipo_I,Ubicacion=ubicacion,Id_A=aeropuerto)
     elif data == "Servicio":
-        instalacion = Instalacion.objects.get(id=id_IS)
+        user = get_user(request)
+        id_role = user.id_role
+        instalacion = Instalacion.objects.get(id=id_role)
         servicio = Servicio.objects.create(
         Id_I=instalacion,Codigo=codigoS,Precio=precio,Descripcion=descripcion)
     elif data == "Valoracion":
@@ -104,21 +112,36 @@ def registrar(request):
         valoracion = Valoracion.objects.create(
         Id_S=servicio,Id_Ar=arribo,Id_I=id_IV,Codigo=codigoV,No_Mat=no_MatVal,Fecha_in=fecha_inVal,Id_C=id_CV,Valoracion=valoracionV)
     elif data == "Reparacion":
-        instalacion = Instalacion.objects.get(id=id_IR)
+        user = get_user(request)
+        id_role = user.id_role
+        instalacion = Instalacion.objects.get(id=id_role)
         servicio = Servicio.objects.get(Id_I=instalacion,Codigo=codigoR)
         reparacion = Reparacion.objects.create(
         Id_S=servicio,Id_I=id_IR,Codigo=codigoR,Tipo=tipoR)
     elif data == "ReparaNave":
-        reparacion = Reparacion.objects.get(Id_I=id_IRN,Codigo=codigoRN,Tipo=tipoRN)
+        user = get_user(request)
+        instalacion = Instalacion.objects.get(id=user.id_role)
+        reparacion = Reparacion.objects.get(Id_I=instalacion,Codigo=codigoRN,Tipo=tipoRN)
         nave = Nave.objects.get(No_Mat=no_MatRN)
         vuelo = Vuelo.objects.get(No_Mat=nave,Fecha_in=fecha_inRN)
         reparanave = ReparaNave.objects.create(
-        Id_Rep=reparacion,Id_V=vuelo,Id_I=id_IRN,Codigo=codigoRN,Tipo=tipoRN,No_Mat=no_MatRN,Fecha_in=fecha_inRN,Fecha_Ini=fecha_Ini,Tiempo_P=tiempo_P,Fecha_Fin=fecha_Fin)
+        Id_Rep=reparacion,Id_V=vuelo,Id_I=instalacion,Codigo=codigoRN,Tipo=tipoRN,No_Mat=no_MatRN,Fecha_in=fecha_inRN,Fecha_Ini=fecha_Ini,Tiempo_P=tiempo_P,Fecha_Fin=fecha_Fin)
     elif data == "ReparacionesDependientes":
         reparacion1 = Reparacion.objects.get(Id_I=id_IRD,Codigo=codigoRD,Tipo=tipoRD)
         reparacion2 = Reparacion.objects.get(Id_I=id_IRDD,Codigo=codigoRDD,Tipo=tipoRDD)
         reparacionesDependientes = ReparacionesDependientes.objects.create(
         Id_Rep=reparacion1,Id_RepDep=reparacion2,Id_I=id_IRD,Codigo=codigoRD,Tipo=tipoRD,Id_IDep=id_IRDD,Codigo_Dep=codigoRDD,Tipo_Dep=tipoRDD)
+    elif data == "Admin_de_Aeropuerto":
+        admin_de_aeropuerto=Usuario.objects.get(email=admin_de_Aeropuerto_correo)
+        admin_de_aeropuerto.id_role=admin_de_Aeropuerto_Id_A
+        admin_de_aeropuerto.role="AA"
+        admin_de_aeropuerto.save()
+    elif data == "Admin_de_Instalacion":
+        usuario = Usuario.objects.get(email=emailAI)
+        instalacion = Instalacion.objects.get(id=id_IAI)
+        usuario.id_role = id_IAI
+        usuario.role="AI"
+        usuario.save()
     messages.success(request, 'Registrado!')
     return redirect('/')
 

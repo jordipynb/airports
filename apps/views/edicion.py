@@ -11,8 +11,11 @@ from model.models.Valoracion import Valoracion
 from model.models.Reparacion import Reparacion
 from model.models.ReparaNave import ReparaNave
 from model.models.ReparacionesDependientes import ReparacionesDependientes
+from accounts.models import Usuario
+from model.models.Aeropuerto import Aeropuerto
 
 def edicion(request,codigo,tabla,campos):
+    email=[]
     if(tabla=="Aeropuerto"):
         elemento = Aeropuerto.objects.get(id=codigo)
     elif(tabla=="Cliente"):
@@ -35,5 +38,11 @@ def edicion(request,codigo,tabla,campos):
         elemento= ReparaNave.objects.get(id=codigo)
     elif(tabla=="ReparacionesDependientes"):
         elemento= ReparacionesDependientes.objects.get(id=codigo)
-    return render(request, "edicion.html", {"elemento": elemento,"tabla":tabla,"campos":campos})
+    elif(tabla=="Admin_de_Aeropuerto"):
+        elemento= Usuario.objects.get(id=codigo)
+        aeropuertos=Aeropuerto.objects.all()
+        usuarios=Usuario.objects.all()
+        for user in usuarios:
+            email.append(user.email)
+    return render(request, "edicion.html", {"elemento": elemento,"tabla":tabla,"campos":campos,"aeropuertos": aeropuertos,"email":email})
 
