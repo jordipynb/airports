@@ -122,7 +122,7 @@ def registrar(request):
         Id_S=servicio,Id_I=id_IR,Codigo=codigoR,Tipo=tipoR)
     elif data == "ReparaNave":
         user = get_user(request)
-        instalacion = Instalacion.objects.get(id=id_role)
+        instalacion = Instalacion.objects.get(id=user.id_role)
         reparacion = Reparacion.objects.get(Id_I=instalacion,Codigo=codigoRN,Tipo=tipoRN)
         nave = Nave.objects.get(No_Mat=no_MatRN)
         vuelo = Vuelo.objects.get(No_Mat=nave,Fecha_in=fecha_inRN)
@@ -142,6 +142,7 @@ def registrar(request):
         usuario = Usuario.objects.get(email=emailAI)
         instalacion = Instalacion.objects.get(id=id_IAI)
         usuario.id_role = id_IAI
+        usuario.role="AI"
         usuario.save()
     messages.success(request, 'Registrado!')
     return redirect('/')
