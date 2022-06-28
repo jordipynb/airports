@@ -94,6 +94,24 @@ class Usuario(AbstractBaseUser, PermissionsMixin):
         # Simplest possible answer: Yes, always
         return self.is_staff
 
+    def __iter__(self):
+        for field_name in self._meta.fields:
+            name=field_name.verbose_name
+            if name == "Email address" or name == "id":
+                value=getattr(self,field_name.attname,None)
+                yield value
+            
+    def campos(self):
+        output=[]
+        for field_name in self._meta.fields:
+            name=field_name.verbose_name
+            if name == "Email address":
+                output.append(field_name.verbose_name)
+            elif name == "id":
+                if self.role== "AA":
+                    output.append("Aeropuerto")
+        return output
+
     @property
     def is_staff(self):
         return self.role == "AG"
