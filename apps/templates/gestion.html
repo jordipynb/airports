@@ -35,7 +35,7 @@
            {% if user.role == "AA" %}
            <option value="Arribo">Arribo</option>
            {% endif %}
-           {% if user.role == "AA" %}
+           {% if user.role == "AA" or user.role == "AI" %}
            <option value="Instalacion">Instalacion</option>
            {% endif %}
            {% if user.role == "AA" %}
@@ -64,7 +64,7 @@
         <div class="form-group">
             <button id="aceptar" class="btn btn-success btn-block text-white">Aceptar</button>
         </div>
-
+        {% if user.role != "AI" %}
         <form action="/registrar/" method="POST">{% csrf_token %}
             <div class="form-group">
                 <input type="text" id="nombre" name="nombre" class="formulario Aeropuerto form-control" placeholder="Nombre" maxlength="50">
@@ -243,7 +243,8 @@
                 <button type="submit" id ="guardar" class="btn btn-success btn-block text-white">Guardar</button>
             </div>
         </form>
-        <form action="/listar" method="GET">{% csrf_token %}
+        {% endif %}
+        <form action="/listar" method="GET">
           <div hidden class="form-group">
             <input type="text" id="tabla" name="data" class="formulario Aeropuerto form-control" maxlength="100" >
           </div>
