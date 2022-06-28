@@ -1,12 +1,9 @@
 from django.db import models
 from django.contrib.auth.models import BaseUserManager, AbstractBaseUser
 from django.contrib.auth.models import PermissionsMixin
-# from django.contrib.auth.forms import UserCreationForm
-# from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth import get_user_model
 
-# User = get_user_model()
 
 
 class UserManager(BaseUserManager):
@@ -46,7 +43,7 @@ class Usuario(AbstractBaseUser, PermissionsMixin):
         ("AG", "Administrador General"),
     )
     role = models.CharField(max_length=2, choices=ROLE, default="US", null=False)
-    id_role = models.IntegerField(null=False, default=0)
+    id_role = models.IntegerField(null=False, default=0,verbose_name="email address")
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
 
@@ -106,7 +103,7 @@ class Usuario(AbstractBaseUser, PermissionsMixin):
     def __iter__(self):
         for field_name in self._meta.fields:
             name=field_name.verbose_name
-            if name == "Email address" or name == "id":
+            if name == "email address" or name == "id":
                 value=getattr(self,field_name.attname,None)
                 yield value
             
@@ -114,8 +111,8 @@ class Usuario(AbstractBaseUser, PermissionsMixin):
         output=[]
         for field_name in self._meta.fields:
             name=field_name.verbose_name
-            if name == "Email address":
-                output.append(field_name.verbose_name)
+            if name == "email address":
+                output.append("Email address")
             elif name == "id":
                 if self.role== "AA":
                     output.append("Aeropuerto")

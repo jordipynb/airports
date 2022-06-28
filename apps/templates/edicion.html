@@ -221,8 +221,9 @@
                         <input type="text" id="tipoRDD" name="TipoRDD" value="{{elemento.Tipo_Dep}}" class="formulario ReparacionesDependientes form-control" placeholder="Tipo Dependiente"
                             >
                     </div>
-                    <div class="form-group" class="formulario Admin_de_Aeropuerto form-control">
-                        Email:{{elemento.email}}
+
+                    <div class="form-group">
+                      <input type="text" id="email" name="email" value="{{elemento.email}}" class="formulario Admin_de_Aeropuerto form-control" placeholder="{{elemento.email}}" disabled>
                     </div>
                     <div class="form-group">
                         <select name="Admin_de_Aeropuerto_Id_A" id="admin_de_Aeropuerto_Id_A" class="formulario Admin_de_Aeropuerto form-control" value="{{elemento.id_role}}" >
