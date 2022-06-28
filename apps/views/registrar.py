@@ -67,6 +67,8 @@ def registrar(request):
     id_IRDD = request.POST['Id_IRDD']
     codigoRDD = request.POST['CodigoRDD']
     tipoRDD = request.POST['TipoRDD']
+    admin_de_Aeropuerto_Id_A = request.POST['Admin_de_Aeropuerto_Id_A']
+    admin_de_Aeropuerto_correo = request.POST['Admin_de_Aeropuerto_correo']
     emailAI = request.POST['EmailAI']
     id_IAI = request.POST['Id_IAI']
     if data == "Aeropuerto":
@@ -125,6 +127,11 @@ def registrar(request):
         reparacion2 = Reparacion.objects.get(Id_I=id_IRDD,Codigo=codigoRDD,Tipo=tipoRDD)
         reparacionesDependientes = ReparacionesDependientes.objects.create(
         Id_Rep=reparacion1,Id_RepDep=reparacion2,Id_I=id_IRD,Codigo=codigoRD,Tipo=tipoRD,Id_IDep=id_IRDD,Codigo_Dep=codigoRDD,Tipo_Dep=tipoRDD)
+    elif data == "Admin_de_Aeropuerto":
+        admin_de_aeropuerto=Usuario.objects.get(email=admin_de_Aeropuerto_correo)
+        admin_de_aeropuerto.id_role=admin_de_Aeropuerto_Id_A
+        admin_de_aeropuerto.role="AA"
+        admin_de_aeropuerto.save()
     elif data == "Admin_de_Instalacion":
         usuario = Usuario.objects.get(email=emailAI)
         instalacion = Instalacion.objects.get(id=id_IAI)

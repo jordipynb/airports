@@ -55,8 +55,11 @@ def para_listar(request):
     elif data == "ReparacionesDependientes":
         listado = ReparacionesDependientes.objects.all()
         name = "Reparaciones Dependientes"
+    elif data == "Admin_de_Aeropuerto":
+        listado= Usuario.objects.filter(role="AA")
+        name = "Administradores de Aeropuertos"
     elif data == "Admin_de_Instalacion":
-        listado = Usuario.objects.all()
+        listado = Usuario.objects.filter(role="AI")
         name = "Administradores de Instalaciones"
     #messages.success(request, 'Listados!')
     campos=[]

@@ -225,12 +225,30 @@
             <div class="form-group">
                 <input type="text" id="tipoRDD" name="TipoRDD"  class="formulario ReparacionesDependientes form-control" placeholder="Tipo Dependiente">
             </div>
-            
             <div class="form-group">
-                <input type="text" id="emailAI" name="EmailAI"  class="formulario Admin_de_Instalacion form-control" placeholder="Email">
+                <select name="EmailAI" id="emailAI" class="formulario Admin_de_Instalacion form-control" placeholder="Email">
+                    {%for a in email%}
+                       <option value="{{a}}">{{a}}</option>
+                    {%endfor%}
+                </select>
             </div>
             <div class="form-group">
                 <input type="text" id="id_IAI" name="Id_IAI"  class="formulario Admin_de_Instalacion form-control" placeholder="Instalacion">
+            </div>
+            <div class="form-group">
+                <select name="Admin_de_Aeropuerto_correo" id="admin_de_Aeropuerto_correo" class="formulario Admin_de_Aeropuerto form-control">
+                    {%for a in email%}
+                       <option value="{{a}}">{{a}}</option>
+                    {%endfor%}
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <select name="Admin_de_Aeropuerto_Id_A" id="admin_de_Aeropuerto_Id_A" class="formulario Admin_de_Aeropuerto form-control">
+                    {%for a in aeropuertos%}
+                       <option value="{{a.id}}">{{a.id}}</option>
+                    {%endfor%}
+                </select>
             </div>
             <div class="form-group">
                 <button type="submit" id ="guardar" class="btn btn-success btn-block text-white">Guardar</button>

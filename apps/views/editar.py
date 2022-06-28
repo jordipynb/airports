@@ -12,6 +12,7 @@ from model.models.Valoracion import Valoracion
 from model.models.Reparacion import Reparacion
 from model.models.ReparaNave import ReparaNave
 from model.models.ReparacionesDependientes import ReparacionesDependientes
+from accounts.models import Usuario
 
 def editar(request):
     codigo = request.POST['id']
@@ -66,6 +67,7 @@ def editar(request):
     id_IRDD = request.POST['Id_IRDD']
     codigoRDD = request.POST['CodigoRDD']
     tipoRDD = request.POST['TipoRDD']
+    admin_de_Aeropuerto_Id_A = request.POST['Admin_de_Aeropuerto_Id_A']
     if data=="Aeropuerto":
         aeropuerto = Aeropuerto.objects.get(id=codigo)
         aeropuerto.Nom_A = nombre
@@ -174,6 +176,10 @@ def editar(request):
         reparacionesDependientes.Codigo_Dep = codigoRDD
         reparacionesDependientes.Tipo_Dep = tipoRDD 
         reparacionesDependientes.save()
+    elif data=="Admin_de_Aeropuerto":
+        admin_de_aeropuerto=Usuario.objects.get(id=codigo)
+        admin_de_aeropuerto.id_role=admin_de_Aeropuerto_Id_A
+        admin_de_aeropuerto.save()
     messages.success(request, 'Actualizado!')
     return redirect('/')
 
