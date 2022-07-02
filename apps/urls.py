@@ -1,4 +1,5 @@
 from django.urls import path, re_path
+from apps import views
 from .views.home import home
 from .views.listar import listar
 from .views.registrar import registrar
@@ -16,4 +17,9 @@ urlpatterns = [
     path('editar/', editar),
     path('listar/eliminar/<codigo>/<tabla>', eliminar),
     path('register/', register, name='register'),
+    path('snd_consulta/', views.home.snd_consulta),
+    path('reparaciones/', views.home.reparaciones),
+    path('first_consult/', views.home.first_consult),
+    path('third_consult/', views.home.third_consult),
+    path('reparaciones_ineficientes/', views.home.reparaciones_ineficientes),
     ]

@@ -2,7 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="226b75ce-8539-413e-b76c-19a89d85ba1c" name="Default Changelist" comment="Updates">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/accounts/static/css/login.css" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/static/css/login.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/aeropuertos.db" beforeDir="false" afterPath="$PROJECT_DIR$/aeropuertos.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/static/css/gestionAeropuerto.css" beforeDir="false" afterPath="$PROJECT_DIR$/apps/static/css/gestionAeropuerto.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/templates/gestion.html" beforeDir="false" afterPath="$PROJECT_DIR$/apps/templates/gestion.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/apps/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/views/home.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/views/home.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/models/Reparacion.py" beforeDir="false" afterPath="$PROJECT_DIR$/model/models/Reparacion.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,7 +52,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/authn/templates" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="restartRequiresConfirmation" value="false" />
   </component>
   <component name="RecentsManager">
@@ -126,7 +134,10 @@
       <workItem from="1656367108395" duration="25461000" />
       <workItem from="1656415266615" duration="5637000" />
       <workItem from="1656422442613" duration="982000" />
-      <workItem from="1656426486119" duration="4267000" />
+      <workItem from="1656426486119" duration="6688000" />
+      <workItem from="1656530839285" duration="619000" />
+      <workItem from="1656717465719" duration="23000" />
+      <workItem from="1656717518971" duration="7893000" />
     </task>
     <task id="LOCAL-00001" summary="Last commit no commit mas ni commit">
       <created>1656429923076</created>
@@ -142,7 +153,14 @@
       <option name="project" value="LOCAL" />
       <updated>1656431193587</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Updates">
+      <created>1656431523018</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1656431523018</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

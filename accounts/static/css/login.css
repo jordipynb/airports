@@ -281,8 +281,8 @@ body .article h1 {
   color: white;
 }
 .glow{
-    color: #fff;
-    text-shadow: #fff 0 0 10px;
+    color: #000;
+    text-shadow: #fff 0 0 3px;
 }
 .tag{
   color: #000;
