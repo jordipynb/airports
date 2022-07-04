@@ -1,7 +1,5 @@
-from django.shortcuts import redirect, render
-from django.contrib import messages
+from django.shortcuts import render
 from accounts.models import Usuario
-
 from model.models.Aeropuerto import Aeropuerto
 from model.models.Cliente import Cliente
 from model.models.Nave import Nave
@@ -13,18 +11,35 @@ from model.models.Valoracion import Valoracion
 from model.models.Reparacion import Reparacion
 from model.models.ReparaNave import ReparaNave
 from model.models.ReparacionesDependientes import ReparacionesDependientes
+from django.http import HttpResponse
+from django.template.loader import render_to_string
+from weasyprint import HTML, CSS
+from weasyprint.text import fonts
+
+def export_pdf(request):
+    html = render_to_string("listados.html", dict1, request)
+    response = HttpResponse(content_type="application/pdf")
+    response["Content-Disposition"] = "inline; report.pdf"
+    css_file=('apps/static/css/gestionAeropuerto.css')
+    css = CSS(filename=css_file)
+    font_config = fonts.FontConfiguration()
+    HTML(string=html).write_pdf(response, stylesheets=[css], font_config=font_config)
+    return response
+
 
 def listar(request):
-    dict=para_listar(request)
-    return render(request, "listados.html", dict)
+    global dict1
+    dict1 = para_listar(request)
+    return render(request, "listados.html", dict1)
+
 
 def para_listar(request):
     data = str(request.GET['data'])
-    listado=[]
+    listado = []
     name = ""
     if data == "Aeropuerto":
         listado = Aeropuerto.objects.all()
-        name = "Aeropuertos" 
+        name = "Aeropuertos"
     elif data == "Cliente":
         listado = Cliente.objects.all()
         name = "Clientes"
@@ -56,17 +71,16 @@ def para_listar(request):
         listado = ReparacionesDependientes.objects.all()
         name = "Reparaciones Dependientes"
     elif data == "Admin_de_Aeropuerto":
-        listado= Usuario.objects.filter(role="AA")
+        listado = Usuario.objects.filter(role="AA")
         name = "Administradores de Aeropuertos"
     elif data == "Admin_de_Instalacion":
         listado = Usuario.objects.filter(role="AI")
         name = "Administradores de Instalaciones"
-    #messages.success(request, 'Listados!')
-    campos=[]
+    # messages.success(request, 'Listados!')
+    campos = []
     for a in listado:
-         campos=a.campos()
-         break
+        campos = a.campos()
+        break
     print(len(campos))
-    
-    return {"campos": campos,"aeropuertos": listado,"tabla":data, "name": name}
 
+    return {"campos": campos, "aeropuertos": listado, "tabla": data, "name": name}
