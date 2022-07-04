@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="226b75ce-8539-413e-b76c-19a89d85ba1c" name="Default Changelist" comment="Consultas Updates">
-      <change afterPath="$PROJECT_DIR$/out.pdf" afterDir="false" />
+    <list default="true" id="226b75ce-8539-413e-b76c-19a89d85ba1c" name="Default Changelist" comment="Export to PDF and updates">
+      <change afterPath="$PROJECT_DIR$/report.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test.pdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aeropuertos.db" beforeDir="false" afterPath="$PROJECT_DIR$/aeropuertos.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/templates/listados.html" beforeDir="false" afterPath="$PROJECT_DIR$/apps/templates/listados.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/views/home.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/views/home.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/views/listar.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/views/listar.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out.pdf" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -137,7 +137,7 @@
       <workItem from="1656717465719" duration="23000" />
       <workItem from="1656717518971" duration="7893000" />
       <workItem from="1656727780225" duration="124000" />
-      <workItem from="1656731110622" duration="11431000" />
+      <workItem from="1656731110622" duration="20058000" />
     </task>
     <task id="LOCAL-00001" summary="Last commit no commit mas ni commit">
       <created>1656429923076</created>
@@ -167,7 +167,14 @@
       <option name="project" value="LOCAL" />
       <updated>1656727837914</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Export to PDF and updates">
+      <created>1656898781804</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1656898781805</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -220,15 +227,16 @@
     <MESSAGE value="Last commit no commit mas ni commit" />
     <MESSAGE value="Updates" />
     <MESSAGE value="Consultas Updates" />
-    <option name="LAST_COMMIT_MESSAGE" value="Consultas Updates" />
+    <MESSAGE value="Export to PDF and updates" />
+    <option name="LAST_COMMIT_MESSAGE" value="Export to PDF and updates" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/apps/views/home.py</url>
-          <line>14</line>
-          <option name="timeStamp" value="1" />
+          <url>file://$PROJECT_DIR$/apps/views/listar.py</url>
+          <line>18</line>
+          <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

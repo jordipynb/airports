@@ -16,12 +16,6 @@ from django.db.models import Max, Count, Avg, Subquery, OuterRef
 import datetime
 
 
-# from django.template.loader import render_to_string
-# from apps.views.listar import para_listar
-# from weasyprint import HTML
-# from weasyprint.text.fonts import FontConfiguration
-
-
 def home(request):
     email = []
     aeropuertos = Aeropuerto.objects.all()
@@ -102,6 +96,3 @@ def reparaciones_ineficientes(request):
         valoracion_promedio=5).values_list('Id_Rep__Id_S', 'monto')
     campos = ['Servicio', 'Monto']
     return render(request, "listados.html", {"campos": campos, "aeropuertos": consulta, "tabla": ""})
-
-
-

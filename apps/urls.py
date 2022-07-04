@@ -2,7 +2,7 @@ from django.urls import path, re_path
 from apps import views
 from .views.home import home
 from .views.listar import listar
-from .views.listar import export_pdf
+from .views.listar import export_pdf2
 from .views.registrar import registrar
 from .views.edicion import edicion
 from .views.editar import editar
@@ -23,5 +23,5 @@ urlpatterns = [
     path('first_consult/', views.home.first_consult),
     path('third_consult/', views.home.third_consult),
     path('reparaciones_ineficientes/', views.home.reparaciones_ineficientes),
-    path('export/', export_pdf, name="export-pdf"),
+    path('export/', export_pdf2, name="export-pdf"),
 ]

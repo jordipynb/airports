@@ -13,17 +13,24 @@ from model.models.ReparaNave import ReparaNave
 from model.models.ReparacionesDependientes import ReparacionesDependientes
 from django.http import HttpResponse
 from django.template.loader import render_to_string
-from weasyprint import HTML, CSS
-from weasyprint.text import fonts
+import pdfkit
 
-def export_pdf(request):
+
+def export_pdf2(request):
     html = render_to_string("listados.html", dict1, request)
-    response = HttpResponse(content_type="application/pdf")
-    response["Content-Disposition"] = "inline; report.pdf"
-    css_file=('apps/static/css/gestionAeropuerto.css')
-    css = CSS(filename=css_file)
-    font_config = fonts.FontConfiguration()
-    HTML(string=html).write_pdf(response, stylesheets=[css], font_config=font_config)
+    css = 'apps/static/css/gestionAeropuerto.css'
+
+    try:
+        myPDF = pdfkit.from_string(html, 'report.pdf', css=css)
+    except Exception as e:
+        temp = open('report.pdf', 'rb')
+        response = HttpResponse(temp, content_type='application/pdf')
+        response['Content-Disposition'] = 'attachment; filename="report.pdf"'
+        return response
+
+    response = HttpResponse(myPDF, content_type='application/pdf')
+    response['Content-Disposition'] = 'attachment; filename="report.pdf"'
+
     return response
 
 
