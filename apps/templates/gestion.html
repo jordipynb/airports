@@ -118,21 +118,24 @@
                     </div>
 
                     <div class="form-group">
-                        <select type="text" id="no_MatV" name="No_MatV" class="formulario Vuelo form-control"
-                                placeholder="No.Matricula">
-                            <option hidden value=""></option>
-                            {% for a in naves %}
-                                <option value="{{ a.No_Mat }}">{{ a.No_Mat }}</option>
-                            {% endfor %}
-                        </select>
+                        <label class="Vuelo formulario labeled">Nave:
+                            <select type="text" id="no_MatV" name="No_MatV" class="formulario Vuelo form-control"
+                                    placeholder="No.Matricula">
+                                <option hidden value=""></option>
+                                {% for a in naves %}
+                                    <option value="{{ a.No_Mat }}">{{ a.No_Mat }}</option>
+                                {% endfor %}
+                            </select></label>
                     </div>
                     <div class="form-group">
-                        <input type="datetime-local" id="fecha_inV" name="Fecha_inV"
-                               class="formulario Vuelo form-control">
+                        <label class="Vuelo formulario labeled">Fecha entrada
+                            <input type="datetime-local" id="fecha_inV" name="Fecha_inV"
+                                   class="formulario Vuelo form-control"></label>
                     </div>
                     <div class="form-group">
-                        <input type="datetime-local" id="fecha_outV" name="Fecha_outV"
-                               class="formulario Vuelo form-control">
+                        <label class="Vuelo formulario labeled">Fecha salida:
+                            <input type="datetime-local" id="fecha_outV" name="Fecha_outV"
+                                   class="formulario Vuelo form-control"></label>
                     </div>
                     <div class="form-group">
                         <input type="text" id="estadoNave" name="EstadoNave" class="formulario Vuelo form-control"
@@ -140,31 +143,34 @@
                     </div>
 
                     <div class="form-group">
-                        <select type="text" id="no_MatA" name="No_MatA" class="formulario Arribo form-control"
-                                placeholder="No.Matricula">
-                            <option hidden value=""></option>
-                            {% for a in naves %}
-                                <option value="{{ a.No_Mat }}">{{ a.No_Mat }}</option>
-                            {% endfor %}
-                        </select>
+                        <label class="Arribo formulario labeled">Nave:
+                            <select type="text" id="no_MatA" name="No_MatA" class="formulario Arribo form-control"
+                                    placeholder="No.Matricula">
+                                <option hidden value=""></option>
+                                {% for a in naves %}
+                                    <option value="{{ a.No_Mat }}">{{ a.No_Mat }}</option>
+                                {% endfor %}
+                            </select></label>
                     </div>
                     <div class="form-group">
-                        <select type="datetime" id="fecha_inA" name="Fecha_inA"
-                                class="formulario Arribo form-control">
-                            <option hidden value=""></option>
-                            {% for a in vuelos %}
-                                <option value="{{ a.Fecha_in.year }}-{{ a.Fecha_in.month }}-{{ a.Fecha_in.day }} {{ a.Fecha_in.hour }}:{{ a.Fecha_in.minute }}">{{ a.Fecha_in.year }}-{{ a.Fecha_in.month }}-{{ a.Fecha_in.day }} {{ a.Fecha_in.hour }}:{{ a.Fecha_in.minute }}</option>
-                            {% endfor %}
-                        </select>
+                        <label class="Arribo formulario labeled">Fecha entrada:
+                            <select type="datetime" id="fecha_inA" name="Fecha_inA"
+                                    class="formulario Arribo form-control">
+                                <option hidden value=""></option>
+                                {% for a in vuelos %}
+                                    <option value="{{ a.Fecha_in.year }}-{{ a.Fecha_in.month }}-{{ a.Fecha_in.day }} {{ a.Fecha_in.hour }}:{{ a.Fecha_in.minute }}">{{ a.Fecha_in.year }}-{{ a.Fecha_in.month }}-{{ a.Fecha_in.day }} {{ a.Fecha_in.hour }}:{{ a.Fecha_in.minute }}</option>
+                                {% endfor %}
+                            </select></label>
                     </div>
                     <div class="form-group">
-                        <select type="text" id="id_CA" name="Id_CA" class="formulario Arribo form-control"
-                                placeholder="Cliente">
-                            <option hidden value=""></option>
-                            {% for a in clientes %}
-                                <option value="{{ a }}">{{ a }}</option>
-                            {% endfor %}
-                        </select>
+                        <label class="Arribo formulario labeled">Cliente:
+                            <select type="text" id="id_CA" name="Id_CA" class="formulario Arribo form-control"
+                                    placeholder="Cliente" aria-label="Cliente">
+                                <option hidden value=""></option>
+                                {% for a in clientes %}
+                                    <option value="{{ a }}">{{ a }}</option>
+                                {% endfor %}
+                            </select></label>
                     </div>
                     <div class="form-group">
                         <input type="text" id="caracter" name="Caracter" class="formulario Arribo form-control"
@@ -214,8 +220,9 @@
                                placeholder="No.Matricula">
                     </div>
                     <div class="form-group">
-                        <input type="datetime-local" id="fecha_inVal" name="Fecha_inVal"
-                               class="formulario Valoracion form-control">
+                        <label class="Valoracion formulario labeled">Fecha entrada:
+                            <input type="datetime-local" id="fecha_inVal" name="Fecha_inVal"
+                                   class="formulario Valoracion form-control"></label>
                     </div>
                     <div class="form-group">
                         <input type="text" id="id_CV" name="Id_CV" class="formulario Valoracion form-control"
@@ -225,7 +232,7 @@
                         <input type="text" id="valoracionV" name="ValoracionV"
                                class="formulario Valoracion form-control" placeholder="Valoracion">
                     </div>
-
+                
                     <div class="form-group">
                         <input type="text" id="id_IR" name="Id_IR" class="formulario Reparacion form-control"
                                placeholder="Instalacion">
@@ -299,41 +306,45 @@
                                class="formulario ReparacionesDependientes form-control" placeholder="Tipo Dependiente">
                     </div>
                     <div class="form-group">
-                        <select name="EmailAI" id="emailAI" class="formulario Admin_de_Instalacion form-control"
-                                placeholder="Email">
-                            <option hidden value=""></option>
-                            {% for a in email %}
-                                <option value="{{ a }}">{{ a }}</option>
-                            {% endfor %}
-                        </select>
+                        <label class="Admin_de_Instalacion formulario labeled">Email:
+                            <select name="EmailAI" id="emailAI" class="formulario Admin_de_Instalacion form-control"
+                                    placeholder="Email">
+                                <option hidden value=""></option>
+                                {% for a in email %}
+                                    <option value="{{ a }}">{{ a }}</option>
+                                {% endfor %}
+                            </select></label>
                     </div>
                     <div class="form-group">
-                        <select type="text" id="id_IAI" name="Id_IAI"
-                                class="formulario Admin_de_Instalacion form-control" placeholder="Instalacion">
-                            <option hidden value=""></option>
-                            {% for a in instalaciones %}
-                                <option value="{{ a }}">{{ a }}</option>
-                            {% endfor %}
-                        </select>
+                        <label class="Admin_de_Instalacion formulario labeled">Instalacion:
+                            <select type="text" id="id_IAI" name="Id_IAI"
+                                    class="formulario Admin_de_Instalacion form-control" placeholder="Instalacion">
+                                <option hidden value=""></option>
+                                {% for a in instalaciones %}
+                                    <option value="{{ a }}">{{ a }}</option>
+                                {% endfor %}
+                            </select></label>
                     </div>
                     <div class="form-group">
-                        <select name="Admin_de_Aeropuerto_correo" id="admin_de_Aeropuerto_correo"
-                                class="formulario Admin_de_Aeropuerto form-control">
-                            <option hidden value=""></option>
-                            {% for a in email %}
-                                <option value="{{ a }}">{{ a }}</option>
-                            {% endfor %}
-                        </select>
+                        <label class="Admin_de_Aeropuerto formulario labeled">Email:
+                            <select name="Admin_de_Aeropuerto_correo" id="admin_de_Aeropuerto_correo"
+                                    class="formulario Admin_de_Aeropuerto form-control">
+                                <option hidden value=""></option>
+                                {% for a in email %}
+                                    <option value="{{ a }}">{{ a }}</option>
+                                {% endfor %}
+                            </select></label>
                     </div>
 
                     <div class="form-group">
-                        <select name="Admin_de_Aeropuerto_Id_A" id="admin_de_Aeropuerto_Id_A"
-                                class="formulario Admin_de_Aeropuerto form-control">
-                            <option hidden value=""></option>
-                            {% for a in aeropuertos %}
-                                <option value="{{ a.id }}">{{ a.id }}</option>
-                            {% endfor %}
-                        </select>
+                        <label class="Admin_de_Aeropuerto formulario labeled">Aeropuertos:
+                            <select name="Admin_de_Aeropuerto_Id_A" id="admin_de_Aeropuerto_Id_A"
+                                    class="formulario Admin_de_Aeropuerto form-control">
+                                <option hidden value=""></option>
+                                {% for a in aeropuertos %}
+                                    <option value="{{ a.id }}">{{ a.id }}</option>
+                                {% endfor %}
+                            </select></label>
                     </div>
                     <div class="form-group">
                         <button type="submit" id="guardar" class="btn btn-success btn-block text-white">Guardar</button>

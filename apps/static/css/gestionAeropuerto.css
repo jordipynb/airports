@@ -4,6 +4,7 @@
 /*  vertical-align: middle;*/
 /*}*/
 
+
 body{
   font-size: 62.5%;
   width: 100%;
@@ -64,6 +65,12 @@ body{
         font-family: 'Times New Roman', sans-serif;
         color: #fff;
         text-shadow: 1px 1px 0 #333, 1px -1px 0 #333, -1px 1px 0 #333, -1px -1px 0 #333;
+}
+.labeled{
+  font-size: 17px;
+  font-family: 'Times New Roman', sans-serif;
+  color: #333334;
+  alignment: left;
 }
 /*.first*/
 /*{*/
